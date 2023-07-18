@@ -12,7 +12,7 @@ export const removeUser = userId => ({
     userId
 });
 
-const loginUser = user => async dispatch => {
+export const loginUser = user => async dispatch => {
     const response = await csrfFetchUser('api/session', {
         method: 'POST',
         body: JSON.stringify(user)
@@ -23,7 +23,7 @@ const loginUser = user => async dispatch => {
     dispatch(receiveUser(data.user))
 }
 
-const logoutUser = userId => async dispatch => {
+export const logoutUser = userId => async dispatch => {
     const response = await csrfFetchUser('api/session', {
         method: 'DELETE'
     });
@@ -33,8 +33,8 @@ const logoutUser = userId => async dispatch => {
     dispatch(removeUser(userId))
 }
 
-const createUser = user => async dispatch => {
-    const response = await csrfFetchUser('api/session', {
+export const createUser = user => async dispatch => {
+    const response = await csrfFetchUser('api/users', {
         method: 'POST',
         body: JSON.stringify(user)
     });
@@ -44,6 +44,8 @@ const createUser = user => async dispatch => {
 }
 
 function userReducer(state = {}, action) {
+
+    const newState = state
     switch (action.type) {
         case REMOVE_USER:
             delete newState[action.userId]
