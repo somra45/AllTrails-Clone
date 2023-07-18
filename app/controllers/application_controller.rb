@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
     protect_from_forgery with: :exception
 
     def attach_authenticity_token
-        headers["CSRF_token"] = masked_authenticity_token
+        headers["X-CSRF_Token"] = masked_authenticity_token(session)
     end
 
     def logged_in?
@@ -22,12 +22,14 @@ class ApplicationController < ActionController::API
     def require_logged_in
         unless logged_in?
             redirect_to user_url(current_user)
+            render json: { errors: ['Must be logged in']}, status: :unauthorized
         end
     end
 
     def require_logged_out
         unless !logged_in?
             redirect_to new_session_url
+            render json: { errors: ['Must be logged out']}, status: :403
         end
     end
 

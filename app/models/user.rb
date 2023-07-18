@@ -11,8 +11,16 @@ class User < ApplicationRecord
 
     has_many :comments,
         class_name: :Comment,
-        foreign_key: :user_id, 
-        
+        foreign_key: :user_id,
+        dependent: :destroy
+    has_many :reviews, 
+        class_name: :Review,
+        foreign_key: :author_id, 
+        dependent: :destroy
+    has_many :liked_trails,
+        class_name: :Like, 
+        foreign_key: :user_id,
+        dependent: :destroy
 
     def is_password?(password)
         password_object = BCrypt::Password.new(password_digest)
