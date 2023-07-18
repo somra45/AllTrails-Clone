@@ -9,6 +9,12 @@ const rootReducer = (state = {}, action) => {
     };
 };
 
+// const entitiesReducer = combineReducers({
+//     entities: entitiesReducer,
+//     session: sessionReducer,
+//     ui: uiReducer
+// })
+
 let enhancer;
 
 if (process.env.NODE_ENV === "production") {
