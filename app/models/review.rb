@@ -4,12 +4,8 @@ class Review < ApplicationRecord
     belongs_to :trail,
         class_name: :Trail,
         foreign_key: :trail_id
-    has_many :comments, 
-        class_name: :Comment, 
-        foreign_key: :review_id,
-        dependent: :destroy
     belongs_to :author,
-        class_name: :user_id,
+        class_name: :Member,
         foreign_key: :author_id
 
 end

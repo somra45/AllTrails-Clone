@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class Member < ApplicationRecord
     attr_reader :password
     before_validation :ensure_session_token
     validates :username, presence: true, uniqueness: { case_sensitive: true }, 
@@ -9,18 +9,15 @@ class User < ApplicationRecord
     validates :session_token, presence: true, uniqueness: { case_sensitive: true }
     validates :password_digest, presence: true, uniqueness: { case_sensitive: true }
 
-    has_many :comments,
-        class_name: :Comment,
-        foreign_key: :user_id,
-        dependent: :destroy
     has_many :reviews, 
         class_name: :Review,
         foreign_key: :author_id, 
         dependent: :destroy
-    has_many :liked_trails,
-        class_name: :Like, 
-        foreign_key: :user_id,
+    has_many :favorited_trails,
+        class_name: :Favorite, 
+        foreign_key: :member_id,
         dependent: :destroy
+    
 
     def is_password?(password)
         password_object = BCrypt::Password.new(password_digest)
@@ -51,10 +48,10 @@ class User < ApplicationRecord
     end
 
     def self.find_by_credentials(username, password)
-        user = User.find_by(usernmae: username)
+        member = Member.find_by(username: username)
 
-        if user && user.is_password?(password)
-            user
+        if member && member.is_password?(password)
+            member
         else
             nil
         end

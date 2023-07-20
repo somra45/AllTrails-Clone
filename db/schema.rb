@@ -10,30 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_18_143119) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_20_143113) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comments", force: :cascade do |t|
-    t.string "body", null: false
+  create_table "favorites", force: :cascade do |t|
+    t.boolean "favorites"
     t.bigint "trail_id", null: false
-    t.integer "author_id", null: false
-    t.bigint "review_id", null: false
+    t.bigint "member_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["review_id"], name: "index_comments_on_review_id"
-    t.index ["trail_id"], name: "index_comments_on_trail_id"
+    t.index ["member_id"], name: "index_favorites_on_member_id"
+    t.index ["trail_id", "member_id"], name: "index_favorites_on_trail_id_and_member_id", unique: true
+    t.index ["trail_id"], name: "index_favorites_on_trail_id"
   end
 
-  create_table "likes", force: :cascade do |t|
-    t.boolean "likes"
-    t.bigint "trail_id", null: false
-    t.bigint "user_id", null: false
+  create_table "members", force: :cascade do |t|
+    t.string "username", null: false
+    t.string "email", null: false
+    t.string "session_token", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["trail_id", "user_id"], name: "index_likes_on_trail_id_and_user_id", unique: true
-    t.index ["trail_id"], name: "index_likes_on_trail_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.index ["email"], name: "index_members_on_email", unique: true
+    t.index ["session_token"], name: "index_members_on_session_token", unique: true
+    t.index ["username"], name: "index_members_on_username", unique: true
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -64,23 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_18_143119) do
     t.index ["trail_id"], name: "index_trails_on_trail_id", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username", null: false
-    t.string "email", null: false
-    t.string "session_token", null: false
-    t.string "password_digest", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["session_token"], name: "index_users_on_session_token", unique: true
-    t.index ["username"], name: "index_users_on_username", unique: true
-  end
-
-  add_foreign_key "comments", "reviews"
-  add_foreign_key "comments", "trails"
-  add_foreign_key "comments", "users", column: "author_id"
-  add_foreign_key "likes", "trails"
-  add_foreign_key "likes", "users"
+  add_foreign_key "favorites", "members"
+  add_foreign_key "favorites", "trails"
+  add_foreign_key "reviews", "members", column: "author_id"
   add_foreign_key "reviews", "trails"
-  add_foreign_key "reviews", "users", column: "author_id"
 end
