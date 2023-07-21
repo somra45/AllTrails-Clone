@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+ApplicationRecord.transaction do 
+
+    Member.destroy_all
+
+    Member.create!(
+        username: "Demo",
+        email: "demo@example.com",
+        password: "Demopassword"
+    )
+
+end

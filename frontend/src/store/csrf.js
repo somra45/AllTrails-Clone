@@ -1,25 +1,15 @@
-export async function restoreSession() {
-    const response = await fetch('/api/session')
-    const token = response.headers.get('X-CSRF-Token')
-
-    sessionStorage.setItem('X-CSRF-Token', token)
-
-    const data = await response.json();
-
-    sessionStorage.setItem('currentUser', JSON.stringify(data.user));
-}
-
 export async function csrfFetch(url, options) {
     options.method ||= 'GET';
     options.headers ||= {};
 
     if (options.method.toUpperCase() !== 'GET') {
-        options.headers['Content-Type'] = 'application/json';
+        options.headers['Content-Type'] = options.headers['Content-Type'] || 'application/json';
         options.headers['Accept'] = 'application/json'
         options.headers['X-CSRF-Token'] = sessionStorage.getItem('X-CSRF-Token')
     }
 
     const response = await fetch(url, options);
+    if (response.status >= 400) throw response; 
     return response
 };
 

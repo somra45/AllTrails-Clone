@@ -1,0 +1,8 @@
+{
+  "short_name": "SmallTrails",
+  "name": "Portfolio full stack project during App Academy",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

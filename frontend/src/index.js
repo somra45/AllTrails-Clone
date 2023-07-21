@@ -1,23 +1,55 @@
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import React from 'react'
-import { restoreSession } from './store/csrf';
+import { restoreSession } from './store/session.js';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom'
+import { csrfFetch } from './store/csrf.js';
+import configureStore from './store';
+import App from './App';
+import * as sessionActions from './store/session';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const store = configureStore();
 
-function initializeApp() {
-    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'))
-    let initialState = {}
-
-    if (currentUser) {
-        initialState = {
-            users: currentUser
-        }
-    }
-    root.render (
-        <React.StrictMode>
-            <App/>
-        </React.StrictMode>
-    );
+if (process.env.NODE_ENV !== 'production') {
+  window.store = store;
+  window.csrfFetch = csrfFetch;
+  window.sessionActions = sessionActions;
 }
 
-restoreSession().then(initializeApp)
+const currentMember = JSON.parse(sessionStorage.getItem('currentMember'))
+let initialState = {}
+
+if (currentMember) {
+    initialState = {
+        members: currentMember
+    }
+}
+
+function Root () {
+    return (
+        <Provider store={store}> 
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>
+    )
+};
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const initializeApp = () => {
+  root.render(
+    <React.StrictMode>
+      <Root />
+    </React.StrictMode>,
+    
+  );
+}
+
+if (
+    sessionStorage.getItem("currentMember") === 'null' ||
+    sessionStorage.getItem("X-CSRF-Token") === 'null' 
+  ) {
+    store.dispatch(restoreSession()).then(initializeApp());
+  } else {
+    initializeApp();
+  }

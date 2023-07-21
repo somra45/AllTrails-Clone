@@ -4,8 +4,7 @@ class Member < ApplicationRecord
     validates :username, presence: true, uniqueness: { case_sensitive: true }, 
         length: {in: 3..66} 
     validates :email, presence: true, uniqueness: { case_sensitive: true }
-    validates :password, presence: true, uniqueness: { case_sensitive: true }, 
-        length: { in: 3..66}
+    validates :password, presence: true, length: { in: 3..66}
     validates :session_token, presence: true, uniqueness: { case_sensitive: true }
     validates :password_digest, presence: true, uniqueness: { case_sensitive: true }
 
@@ -25,20 +24,20 @@ class Member < ApplicationRecord
     end
 
     def password=(password)
-        @password = BCrypt::Password.create(password_digest)
+        self.password_digest = BCrypt::Password.create(password)
         @password = password
     end
 
     def generate_unique_session_token
         while true
             token = SecureRandom.urlsafe_base64
-            return token unless User.exists?(session_token: token)
+            return token unless Member.exists?(session_token: token)
         end
         
     end
 
     def ensure_session_token
-        session_token ||= generate_unique_session_token
+        self.session_token ||= generate_unique_session_token
     end
 
     def reset_session_token!
@@ -47,8 +46,8 @@ class Member < ApplicationRecord
         session_token
     end
 
-    def self.find_by_credentials(username, password)
-        member = Member.find_by(username: username)
+    def self.find_by_credentials(email, password)
+        member = Member.find_by(email: email)
 
         if member && member.is_password?(password)
             member

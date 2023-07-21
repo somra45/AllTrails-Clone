@@ -1,13 +1,13 @@
-import { createStore, combineReducers, applyMiddleware} from 'redux'
+import { createStore, combineReducers, applyMiddleware, compose} from 'redux'
 import thunk from 'redux-thunk'
 import logger from 'redux-logger'
-import userReducer from './userReducer'
+import memberReducer from './memberReducer'
+import sessionReducer from './session'
 
-const rootReducer = (state = {}, action) => {
-    return {
-        users: userReducer(state.users, action)
-    };
-};
+const rootReducer = combineReducers({
+    members: memberReducer,
+    session: sessionReducer
+});
 
 // const entitiesReducer = combineReducers({
 //     entities: entitiesReducer,
@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 const configureStore = (preloadedState = {}, ) => {
-    return createStore(rootReducer, preloadedState, enhancer)
+    return createStore(rootReducer, preloadedState, enhancer);
 }
 
-export default configureStore
+export default configureStore;
