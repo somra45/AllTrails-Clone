@@ -11,13 +11,14 @@ const LoginFormPage = () => {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
-    if (sessionMember) {
-        return <Redirect to='/' />
-    }
+    // if (sessionMember) {
+    //     return <Redirect to='/' />
+    // }
 
     const handleSubmit = (e) => {
+        e.preventDefault();
         setErrors([]);
-        return dispatch(loginMember({
+        dispatch(loginMember({
             credential: credential,
             password: password
         })).catch( async (response) => {

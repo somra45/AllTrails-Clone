@@ -21,7 +21,7 @@ let initialState = {}
 
 if (currentMember) {
     initialState = {
-        members: currentMember
+        member: currentMember
     }
 }
 
@@ -40,14 +40,12 @@ const initializeApp = () => {
   root.render(
     <React.StrictMode>
       <Root />
-    </React.StrictMode>,
-    
+    </React.StrictMode>
   );
 }
-
 if (
-    sessionStorage.getItem("currentMember") === 'null' ||
-    sessionStorage.getItem("X-CSRF-Token") === 'null' 
+    sessionStorage.getItem("currentMember") === null ||
+    sessionStorage.getItem("X-CSRF-Token") === null 
   ) {
     store.dispatch(restoreSession()).then(initializeApp());
   } else {

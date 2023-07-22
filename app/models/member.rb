@@ -4,7 +4,7 @@ class Member < ApplicationRecord
     validates :username, presence: true, uniqueness: { case_sensitive: true }, 
         length: {in: 3..66} 
     validates :email, presence: true, uniqueness: { case_sensitive: true }
-    validates :password, presence: true, length: { in: 3..66}
+    validates :password, presence: true, length: { in: 3..66}, allow_nil: true
     validates :session_token, presence: true, uniqueness: { case_sensitive: true }
     validates :password_digest, presence: true, uniqueness: { case_sensitive: true }
 

@@ -1,9 +1,9 @@
 class Api::SessionsController < ApplicationController
-    # before_action :require_logged_out, only: [:create]
+    before_action :require_logged_out, only: [:create]
     before_action :require_logged_in, only: [:destroy]
 
     def create
-        @member = Member.find_by_credentials(params[:email], params[:password])
+        @member = Member.find_by_credentials(params[:member][:credential], params[:member][:password])
         if @member
             login!(@member)
             render 'api/members/show'
@@ -19,11 +19,9 @@ class Api::SessionsController < ApplicationController
 
     def show
         @member = current_member
-        debugger
         if @member 
             render 'api/members/show'
         else
-            debugger
             render json: { member: nil }
         end
     end

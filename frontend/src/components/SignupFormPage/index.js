@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { signupMember } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import './LoginForm.css'
+import './SignupForm.css'
 
 const SignupFormPage = () => {
     const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const SignupFormPage = () => {
     const [errors, setErrors] = useState([]);
 
     if (sessionMember) {
-        return <Redirect to='/' />
+        return <Redirect to='/login' />
     }
 
     const handleSubmit = (e) => {
@@ -37,16 +37,11 @@ const SignupFormPage = () => {
             }
         });
     };
-
-    const handleDemo = (e) => {
-        e.preventDefault();
-        setCredential('Demo');
-        setPassword('Demopassword')
-    }
+    
     return (
-        <div>
+        <div className='login-module'>
             <div className='login-div' >
-                <h1 className='login-header'>Welcome Back. <br></br> Log in and start exploring.</h1>
+                <h1 className='login-header'> Sign up today to start planning <br></br> your next adventure</h1>
                 <div>
                     <form className='login-form' onSubmit={handleSubmit}>
                     <input className='login-field' type='text' placeholder='Email Address' 
@@ -54,7 +49,6 @@ const SignupFormPage = () => {
                     <input className='login-field' type='password' placeholder='Password' 
                         value={password} onChange={(e) => {setPassword(e.target.value)}}/>
                     <button className='login-submit' >Log in</button>
-                    <button className='login-submit' onClick={handleDemo} >Demo Login</button>
                     <ul>
                         {errors.map((error) => {
                             return <li key={error} >{error}</li>    

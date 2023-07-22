@@ -18,16 +18,16 @@ export const removeCurrentMember = memberId => {
 };
 
 export const loginMember = (member) => async dispatch => {
-debugger;
+
     const response = await csrfFetch('api/session', {
         method: 'POST',
         body: JSON.stringify({
             member: member
         })
     })
-    debugger;
     if (response.ok) {
         const data = await response.json();
+
         if (data.errors) throw data;
         storeCurrentMember(data.member)
         dispatch(setCurrentMember(data.member))
@@ -41,12 +41,22 @@ export const logoutMember = (currentMemberId) => async dispatch => {
     const response = await csrfFetch('api/session', {
         method: 'DELETE',
     });
-
-    dispatch({
-        type: LOGOUT_MEMBER,
-        memberId: currentMemberId
-    });
+    storeCurrentMember();
+    dispatch(removeCurrentMember(currentMemberId));
 };
+
+export const signupMember = (member) => async dispatch => {
+    const response = await csrfFetch('api/members', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(member)
+    })
+
+    const data = response.json();
+    storeCurrentMember(data.member);
+    dispatch(setCurrentMember(data.member));
+
+}
 
 const storeCurrentMember = member => {
     if (member) {
@@ -62,9 +72,7 @@ const storeCSRFToken = response => {
 }
 
 export const restoreSession = () => async dispatch =>{
-    debugger;
     const response = await fetch('/api/session');
-    debugger;
     if (response.ok) {
         storeCSRFToken(response);   
         const data = await response.json();
@@ -74,7 +82,7 @@ export const restoreSession = () => async dispatch =>{
 }
 
 const initialState = { 
-    user: JSON.parse(sessionStorage.getItem("currentMember"))
+    member: JSON.parse(sessionStorage.getItem("currentMember"))
 };
 
 const sessionReducer = (state = initialState, action) => { 
@@ -85,9 +93,7 @@ const sessionReducer = (state = initialState, action) => {
             return newState;
         case LOGIN_MEMBER:
             if (action.member) {
-                newState[action.member] = {...action.member}
-            } else {
-                newState[action.member] = null
+                newState.member = action.member.id
             }
             return newState;
         default:
