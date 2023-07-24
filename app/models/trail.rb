@@ -15,10 +15,10 @@ class Trail < ApplicationRecord
 
     has_many :members_favorited, 
         through: :favorites, 
-        source: :author
+        source: :author,
         dependent: :destroy
     
-    has_many :members_reviewed. 
+    has_many :members_reviewed,
         through: :reviews, 
         source: :author, 
         dependent: :destroy
