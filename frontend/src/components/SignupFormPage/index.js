@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 const SignupFormPage = () => {
     const dispatch = useDispatch();
     const sessionMember = useSelector((state) => state.session.member);
-    const [username, setUsername] = useState('');
+    const [firstname, setFirstname] = useState('');
+    const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
@@ -20,8 +21,9 @@ const SignupFormPage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setErrors([]);
-        return dispatch(signupMember({
-            username: username,
+        dispatch(signupMember({
+            firstname: firstname,
+            lastname: lastname,
             email: email,
             password: password
         })).catch( async (response) => {
@@ -40,26 +42,33 @@ const SignupFormPage = () => {
             }
         });
     };
+
+    const getErrorByField = (field) => {
+        return errors.find((error) => {
+            return error.includes(field)
+        });
+    };
     
     return (
-        <div className='login-module'>
+        <div className='signup-module'>
             <div className='login-div' >
                 <h1 className='login-header'> Sign up today to start planning <br></br> your next adventure</h1>
                 <div className='signup-form-div'>
                     <form className='login-form' onSubmit={handleSubmit}>
-                    <input className='login-field' type='text' placeholder='Username' 
-                        value={username} onChange={(e) => {setUsername(e.target.value)}}/>
-                    <input className='login-field' type='text' placeholder='Email Address' 
-                        value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-                    <input className='login-field' type='password' placeholder='Password' 
-                        value={password} onChange={(e) => {setPassword(e.target.value)}}/>
-                    <button className='login-submit' >Sign Up</button>
-                    <ul>
-                        {errors.map((error) => {
-                            return <li key={error} >{error}</li>    
-                        })}
-                    </ul>
-                        </form>
+                        <input className={ getErrorByField('Firstname') ? 'login-field-error' : 'login-field'} type='text' placeholder='First Name' 
+                            value={firstname} onChange={(e) => {setFirstname(e.target.value)}}/>
+                            { getErrorByField('Firstname') ? <span className='signup-error'>{getErrorByField('Firstname')}</span> : <span></span>}
+                        <input className={ getErrorByField('Firstname') ? 'login-field-error' : 'login-field'} type='text' placeholder='Last Name' 
+                            value={lastname} onChange={(e) => {setLastname(e.target.value)}}/>
+                            { getErrorByField('Lastname') ? <span className='signup-error'>{getErrorByField('Lastname')}</span> : <span></span>}
+                        <input className={ getErrorByField('Firstname') ? 'login-field-error' : 'login-field'} type='text' placeholder='Email Address' 
+                            value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+                            { getErrorByField('Email') ? <span className='signup-error'>{getErrorByField('Email')}</span> : <span></span>}
+                        <input className={ getErrorByField('Firstname') ? 'login-field-error' : 'login-field'} type='password' placeholder='Password' 
+                            value={password} onChange={(e) => {setPassword(e.target.value)}}/>
+                            { getErrorByField('Password') ? <span className='signup-error'>{getErrorByField('Password')}</span> : <span></span>}
+                        <button className='login-submit' >Sign Up</button>
+                    </form>
                     <p className='login-text'> Already have an account? <Link to='/login'>Log In</Link></p>
                 </div>  
             </div>

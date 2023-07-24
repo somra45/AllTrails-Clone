@@ -11,7 +11,8 @@ ApplicationRecord.transaction do
     Member.destroy_all
 
     Member.create!(
-        username: "Demo",
+        firstname: "Demo",
+        lastname: "Example",
         email: "demo@example.com",
         password: "Demopassword"
     )

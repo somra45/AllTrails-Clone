@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.css'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { addErrors } from '../../store/errorReducer';
 
 const LoginFormPage = () => {
     const dispatch = useDispatch();
     const sessionMember = useSelector((state) => state.session.member);
-    const [credential, setCredential] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
+    const currentErrors = useSelector((state) => state.errors)
 
     if (sessionMember) {
         return <Redirect to='/' />
@@ -20,7 +22,7 @@ const LoginFormPage = () => {
         e.preventDefault();
         setErrors([]);
         dispatch(loginMember({
-            credential: credential,
+            email: email,
             password: password
         })).catch( async (response) => {
             let data;
@@ -37,28 +39,33 @@ const LoginFormPage = () => {
                 setErrors([response.statusText]);
             }
         });
+        dispatch(addErrors(errors));
     };
 
     const handleDemo = (e) => {
-        e.preventDefault();
-        setCredential('demo@example.com');
-        setPassword('Demopassword');
-    }
+        setEmail("demo@example.com");
+        setPassword("Demopassword");
+    };
+
+    const getErrorByField = (field) => {
+        return errors.find((error) => {
+            return error.includes(field)
+        });
+    };
+    
     return (
         <div className='login-module'>
             <div className='login-div' >
                 <h1 className='login-header'>Welcome Back. <br></br> Log in and start exploring.</h1>
                 <div className='login-form-div'>
                     <form className='login-form' onSubmit={handleSubmit}>
-                    <input className='login-field' type='text' placeholder='Email Address' 
-                        value={credential} onChange={(e) => {setCredential(e.target.value)}}/>
-                    <input className='login-field' type='password' placeholder='Password' 
+                    <input className={errors.length >= 1 ? 'login-field-error' : 'login-field'} type='text' placeholder='Email Address' 
+                        value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+                    <input className={errors.length >= 1 ? 'login-field-error' : 'login-field'} type='password' placeholder='Password' 
                         value={password} onChange={(e) => {setPassword(e.target.value)}}/>
+                        { errors.length >= 1 ? <span className='login-error'>{erro}</span> : <span></span> }
                     <button className='login-submit' >Log in</button>
                     <button className='login-submit' onClick={handleDemo} >Demo Login</button>
-                    <ul>
-                        {errors.map((error) => <li>{error}</li>)}
-                    </ul>
                     </form>
                     <p className='signup-text'> Don't have an account? <Link to='/signup'>Sign Up for free</Link></p>
                 </div>  

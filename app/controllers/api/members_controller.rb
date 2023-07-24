@@ -7,7 +7,7 @@ class Api::MembersController < ApplicationController
         if @member
             render :show
         else
-            render json: { errors: ['Member not found'], status: 422 }
+            render json: { errors: ['Member not found']}, status: 422 
         end
     end
 
@@ -42,6 +42,6 @@ class Api::MembersController < ApplicationController
     end
 
     def member_params
-        params.require(:member).permit(:username, :email, :password)
+        params.require(:member).permit(:firstname, :lastname, :email, :password)
     end
 end

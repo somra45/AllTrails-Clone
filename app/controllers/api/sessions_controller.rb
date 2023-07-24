@@ -3,12 +3,12 @@ class Api::SessionsController < ApplicationController
     before_action :require_logged_in, only: [:destroy]
 
     def create
-        @member = Member.find_by_credentials(params[:member][:credential], params[:member][:password])
+        @member = Member.find_by_credentials(params[:member][:email], params[:member][:password])
         if @member
             login!(@member)
             render 'api/members/show'
         else
-            render json: { errors: ['Invalid credentials'], status: 422}
+            render json: { errors: ['Invalid credentials']}, status: 422
         end
     end
 

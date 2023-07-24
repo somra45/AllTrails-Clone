@@ -3,10 +3,12 @@ import thunk from 'redux-thunk'
 import logger from 'redux-logger'
 import memberReducer from './memberReducer'
 import sessionReducer from './session'
+import errorReducer from './errorReducer'
 
 const rootReducer = combineReducers({
     members: memberReducer,
-    session: sessionReducer
+    session: sessionReducer,
+    errors: errorReducer
 });
 
 // const entitiesReducer = combineReducers({
