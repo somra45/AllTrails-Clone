@@ -47,11 +47,6 @@ const LoginFormPage = () => {
         setPassword("Demopassword");
     };
 
-    const getErrorByField = (field) => {
-        return errors.find((error) => {
-            return error.includes(field)
-        });
-    };
     
     return (
         <div className='login-module'>
