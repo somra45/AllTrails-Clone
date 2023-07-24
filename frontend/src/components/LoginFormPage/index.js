@@ -3,6 +3,7 @@ import { loginMember } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './LoginForm.css'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const LoginFormPage = () => {
     const dispatch = useDispatch();
@@ -11,9 +12,9 @@ const LoginFormPage = () => {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState([]);
 
-    // if (sessionMember) {
-    //     return <Redirect to='/' />
-    // }
+    if (sessionMember) {
+        return <Redirect to='/' />
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,10 +45,10 @@ const LoginFormPage = () => {
         setPassword('Demopassword');
     }
     return (
-        <div>
+        <div className='login-module'>
             <div className='login-div' >
                 <h1 className='login-header'>Welcome Back. <br></br> Log in and start exploring.</h1>
-                <div>
+                <div className='login-form-div'>
                     <form className='login-form' onSubmit={handleSubmit}>
                     <input className='login-field' type='text' placeholder='Email Address' 
                         value={credential} onChange={(e) => {setCredential(e.target.value)}}/>
@@ -58,7 +59,8 @@ const LoginFormPage = () => {
                     <ul>
                         {errors.map((error) => <li>{error}</li>)}
                     </ul>
-                        </form>
+                    </form>
+                    <p className='signup-text'> Don't have an account? <Link to='/signup'>Sign Up for free</Link></p>
                 </div>  
             </div>
         </div>

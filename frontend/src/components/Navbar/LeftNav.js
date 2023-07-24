@@ -5,8 +5,8 @@ const LeftNav = () => {
     return (
         <>
             <a className='logo-link' href='/'>
-                <img className='logo' src='/assets/logo.png'></img>
-                <h2>SmallTrails</h2>
+                <img className='logo' alt='logo' src='/assets/logo.png'></img>
+                <h2 className='logo-header' >SmallTrails</h2>
             </a>
         </>
     );

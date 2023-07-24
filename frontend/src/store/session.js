@@ -18,7 +18,6 @@ export const removeCurrentMember = memberId => {
 };
 
 export const loginMember = (member) => async dispatch => {
-
     const response = await csrfFetch('api/session', {
         method: 'POST',
         body: JSON.stringify({
@@ -27,7 +26,6 @@ export const loginMember = (member) => async dispatch => {
     })
     if (response.ok) {
         const data = await response.json();
-
         if (data.errors) throw data;
         storeCurrentMember(data.member)
         dispatch(setCurrentMember(data.member))
@@ -55,7 +53,6 @@ export const signupMember = (member) => async dispatch => {
     const data = response.json();
     storeCurrentMember(data.member);
     dispatch(setCurrentMember(data.member));
-
 }
 
 const storeCurrentMember = member => {

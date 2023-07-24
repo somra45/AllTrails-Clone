@@ -1,5 +1,5 @@
 class Api::MembersController < ApplicationController
-    wrap_parameter include: Member.attribute_names + ["password"]
+    wrap_parameters include: Member.attribute_names + ["password"]
     before_action :require_logged_out, only: [:create]
     def show
         @member = Member.find(params[:id])
