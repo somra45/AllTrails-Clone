@@ -58,7 +58,7 @@ const LoginFormPage = () => {
                         value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                     <input className={errors.length >= 1 ? 'login-field-error' : 'login-field'} type='password' placeholder='Password' 
                         value={password} onChange={(e) => {setPassword(e.target.value)}}/>
-                        { errors.length >= 1 ? <span className='login-error'>{erro}</span> : <span></span> }
+                        { errors.length >= 1 ? <span className='login-error'>{errors}</span> : <span></span> }
                     <button className='login-submit' >Log in</button>
                     <button className='login-submit' onClick={handleDemo} >Demo Login</button>
                     </form>

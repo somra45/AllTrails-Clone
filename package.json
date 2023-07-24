@@ -1,0 +1,25 @@
+{
+  "name": "alltrails-clone",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "build": "npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/somra45/AllTrails-Clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "16.19.1"
+  },
+  "bugs": {
+    "url": "https://github.com/somra45/AllTrails-Clone/issues"
+  },
+  "homepage": "https://github.com/somra45/AllTrails-Clone#readme"
+}
