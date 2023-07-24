@@ -30,8 +30,7 @@ function Root () {
     return (
         <Provider store={store}> 
             <BrowserRouter>
-                {/* <App /> */}
-                <h1>hello world</h1>
+                <App /> 
             </BrowserRouter>
         </Provider>
     )
