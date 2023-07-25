@@ -24,6 +24,11 @@ function App() {
         < Splash />
         < Footer />
       </Route>
+      <Route exact path="/trails/:trailId">
+        <Navbar />
+        < Splash />
+        < Footer />
+      </Route>
     </Switch>
   );
 }

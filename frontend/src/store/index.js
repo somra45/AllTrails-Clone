@@ -4,9 +4,15 @@ import logger from 'redux-logger'
 import memberReducer from './memberReducer'
 import sessionReducer from './session'
 import errorReducer from './errorReducer'
+import trailsReducer from './trailsReducer'
+
+const entitiesReducer = combineReducers({
+  members: memberReducer,
+  trails: trailsReducer
+})
 
 const rootReducer = combineReducers({
-    members: memberReducer,
+    entities: entitiesReducer,
     session: sessionReducer,
     errors: errorReducer
 });

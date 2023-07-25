@@ -1,7 +1,7 @@
 .splash-main-div {
     width: 100% !important;
     height: 680px;
-    background-image: url(../../../public/assets/group-friends-travel-forest-together.jpg);
+    background-image: url(../../../public/assets/images/group-friends-travel-forest-together.jpg);
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
@@ -20,4 +20,26 @@
     position: relative;
     text-align: center;
     top: 30%;
+}
+
+.index-div {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.index-header {
+    font-family: 'Manrope', sans-serif;
+    text-decoration: none;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0px;
+    padding: 0px;
+    color: #2b381f;
+    padding-top: 70px;
+    padding-left: 15px;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
 }

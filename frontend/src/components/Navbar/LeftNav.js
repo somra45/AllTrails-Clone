@@ -5,7 +5,7 @@ const LeftNav = () => {
     return (
         <>
             <a className='logo-link' href='/'>
-                <img className='logo' alt='logo' src='/assets/logo.png'></img>
+                <img className='logo' alt='logo' src='/assets/images/logo.png'></img>
                 <h2 className='logo-header' >SmallTrails</h2>
             </a>
         </>
