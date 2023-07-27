@@ -362,8 +362,9 @@ Trail.create!(
             REVIEWS_DICTIONARY.each do |review|
                 id = memberids.sample
                     current_ids = trail.reviews.map { | review | review.author_id }
-                if review.include?(word) && !current_ids.include?(id)
-                    new_review = Review.create(trail_id: trail.trail_id, body: review, author_id: id)
+                    current_reviews = trail.reviews.map { | review | review.body }
+                if review.include?(word) && !current_ids.include?(id) && !current_reviews.include?(review)
+                    new_review = Review.create(trail_id: trail.trail_id, body: review, author_id: id, rating: [1, 2, 3, 4, 5].sample)
                 end
             end
         end

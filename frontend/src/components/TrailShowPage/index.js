@@ -11,7 +11,7 @@ const TrailShowPage = () => {
     const trailId = useParams().trailId;
     const dispatch = useDispatch();
     const trail = useSelector((state) => state.entities.trails[trailId]);
-
+    const reviews = Object.values(useSelector((state) => state.entities.reviews))
     useEffect(() => {
         dispatch(fetchTrail(trailId));
     }, [trailId]) 
@@ -87,7 +87,8 @@ const TrailShowPage = () => {
                         {trail.tags.map((tag) => (<div className='tag-div'><p className='tag'>{tag}</p></div>))}  
                         </div>
                         <div className='review-feed-div'>
-                        {trail.reviews.map((review) => (
+                            <h1 className='review-header'>Reviews</h1>
+                        {reviews.map((review) => (
                             <div className='review-div'>
                                 <h2 className='review-author'>{`${review.author.firstname} ${review.author.lastname[0]}`}</h2>
                                 <p className='review'>{review.body}</p>
