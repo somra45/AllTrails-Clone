@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { signupMember } from '../../store/session';
+import { loginMember, signupMember } from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import './SignupForm.css'
@@ -41,6 +41,12 @@ const SignupFormPage = () => {
                 setErrors([response.statusText]);
             }
         });
+        if (errors.length < 1) {
+            dispatch(loginMember({
+                email: email,
+                password: password
+            }))
+        }
     };
 
     const getErrorByField = (field) => {
@@ -58,13 +64,13 @@ const SignupFormPage = () => {
                         <input className={ getErrorByField('Firstname') ? 'login-field-error' : 'login-field'} type='text' placeholder='First Name' 
                             value={firstname} onChange={(e) => {setFirstname(e.target.value)}}/>
                             { getErrorByField('Firstname') ? <span className='signup-error'>{getErrorByField('Firstname')}</span> : <span></span>}
-                        <input className={ getErrorByField('Firstname') ? 'login-field-error' : 'login-field'} type='text' placeholder='Last Name' 
+                        <input className={ getErrorByField('Lastname') ? 'login-field-error' : 'login-field'} type='text' placeholder='Last Name' 
                             value={lastname} onChange={(e) => {setLastname(e.target.value)}}/>
                             { getErrorByField('Lastname') ? <span className='signup-error'>{getErrorByField('Lastname')}</span> : <span></span>}
-                        <input className={ getErrorByField('Firstname') ? 'login-field-error' : 'login-field'} type='text' placeholder='Email Address' 
+                        <input className={ getErrorByField('Email') ? 'login-field-error' : 'login-field'} type='text' placeholder='Email Address' 
                             value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                             { getErrorByField('Email') ? <span className='signup-error'>{getErrorByField('Email')}</span> : <span></span>}
-                        <input className={ getErrorByField('Firstname') ? 'login-field-error' : 'login-field'} type='password' placeholder='Password' 
+                        <input className={ getErrorByField('Password') ? 'login-field-error' : 'login-field'} type='password' placeholder='Password' 
                             value={password} onChange={(e) => {setPassword(e.target.value)}}/>
                             { getErrorByField('Password') ? <span className='signup-error'>{getErrorByField('Password')}</span> : <span></span>}
                         <button className='login-submit' >Sign Up</button>

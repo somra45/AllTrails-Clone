@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: members
+#
+#  id              :bigint           not null, primary key
+#  firstname       :string           not null
+#  email           :string           not null
+#  session_token   :string           not null
+#  password_digest :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  lastname        :string
+#
 class Member < ApplicationRecord
     attr_reader :password
     before_validation :ensure_session_token
@@ -7,6 +20,8 @@ class Member < ApplicationRecord
     validates :password, presence: true, length: { in: 3..66}, allow_nil: true
     validates :session_token, presence: true, uniqueness: { case_sensitive: true }
     validates :password_digest, presence: true, uniqueness: { case_sensitive: true }
+
+    has_one_attached :image
 
     has_many :reviews, 
         class_name: :Review,

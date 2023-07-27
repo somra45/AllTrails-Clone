@@ -1,4 +1,4 @@
-
+import { csrfFetch } from "./csrf";
 
 export const RECEIVE_TRAILS = 'trails/RECEIVE_TRAILS';
 export const RECEIVE_TRAIL = 'trails/RECEIVE_TRAIL';
@@ -6,7 +6,7 @@ export const REMOVE_TRAIL = 'trails/REMOVE_TRAIL';
 
 
 export const fetchTrails = () => async dispatch => {
-    const response = await fetch('api/trails');
+    const response = await csrfFetch('api/trails');
 
     if (response.ok) {
         const data = await response.json();
@@ -19,13 +19,14 @@ export const fetchTrails = () => async dispatch => {
     }
 };
 
-export const fetchTrail = (trail) => async dispatch => {
-    const response = await fetch(`api/trails/${trail.id}`)
-
+export const fetchTrail = (trailId) => async dispatch => {
+    debugger;
+    const response = await csrfFetch(`/api/trails/${trailId}`);
     if (response.ok) {
         const data = await response.json();
+        debugger;
         dispatch({
-            type: RECEIVE_TRAILS,
+            type: RECEIVE_TRAIL,
             trail: data
         });
     } else {
@@ -39,7 +40,8 @@ const trailsReducer = (state = {}, action) => {
     let newState = {...state}
     switch (action.type) {
         case RECEIVE_TRAIL:
-            newState = {...newState, [action.trail.id]: action.trail};
+            debugger;
+            newState = {...newState, ...action.trail};
             return newState;
         case RECEIVE_TRAILS:
             newState = {...newState, ...action.trails};

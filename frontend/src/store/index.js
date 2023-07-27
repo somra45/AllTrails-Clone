@@ -5,10 +5,13 @@ import memberReducer from './memberReducer'
 import sessionReducer from './session'
 import errorReducer from './errorReducer'
 import trailsReducer from './trailsReducer'
+import reviewReducer from './reviewReducer'
+
 
 const entitiesReducer = combineReducers({
   members: memberReducer,
-  trails: trailsReducer
+  trails: trailsReducer,
+  reviews: reviewReducer
 })
 
 const rootReducer = combineReducers({
@@ -17,11 +20,6 @@ const rootReducer = combineReducers({
     errors: errorReducer
 });
 
-// const entitiesReducer = combineReducers({
-//     entities: entitiesReducer,
-//     session: sessionReducer,
-//     ui: uiReducer
-// })
 
 let enhancer;
 

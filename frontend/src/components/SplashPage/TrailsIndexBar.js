@@ -18,7 +18,7 @@ const TrailsIndex = () => {
         <>
             <div className='trails-index-div'>
             {trails.map((trail) => (
-                <Link className='trail-link' to={`/trails/${trail.id}`}>
+                <Link to={`/trails/${trail.trailId}`} className='trail-link' >
                     <div className='trail-div'>
                         <div className='trail-image-div'>
                             <img className='trail-image'src='./assets/images/stock-trail.jpg'/>

@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_25_151638) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_27_172643) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.boolean "favorites"
@@ -42,10 +70,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_151638) do
     t.string "body", null: false
     t.bigint "trail_id", null: false
     t.integer "author_id", null: false
-    t.string "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trail_id"], name: "index_reviews_on_trail_id"
+  end
+
+  create_table "tag_joins", force: :cascade do |t|
+    t.integer "trail_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_tag_joins_on_tag_id"
+    t.index ["trail_id"], name: "index_tag_joins_on_trail_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "trail_tag", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trail_tag"], name: "index_tags_on_trail_tag"
   end
 
   create_table "trails", force: :cascade do |t|
@@ -67,8 +110,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_151638) do
     t.index ["trail_id"], name: "index_trails_on_trail_id", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "favorites", "members"
   add_foreign_key "favorites", "trails"
   add_foreign_key "reviews", "members", column: "author_id"
   add_foreign_key "reviews", "trails"
+  add_foreign_key "tag_joins", "tags"
+  add_foreign_key "tag_joins", "trails"
 end

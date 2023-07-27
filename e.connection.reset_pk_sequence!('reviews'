@@ -1,0 +1,50 @@
+=> [[32m#<Review:0x00007f6a75676268[0m
+  id: [1;34m1[0m,
+  body:
+   [31m[1;31m"[0m[31mThere were a lot of bugs, but we kind of expected it after all this rain. Trails marking was unclear. you should download the map.[1;31m"[0m[31m[0m,
+  trail_id: [1;34m1[0m,
+  author_id: [1;34m1[0m,
+  created_at:
+   [1;34;4mThu[0m, [1;34m27[0m [1;34;4mJul[0m [1;34m2023[0m [1;34m18[0m:[1;34m47[0m:[1;35m11.756209000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at:
+   [1;34;4mThu[0m, [1;34m27[0m [1;34;4mJul[0m [1;34m2023[0m [1;34m18[0m:[1;34m47[0m:[1;35m11.756209000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m,
+ [32m#<Review:0x00007f6a75647e68[0m
+  id: [1;34m2[0m,
+  body:
+   [31m[1;31m"[0m[31mGood views along the way and the top is awesome! Bring lots of water for this one. Some fairly steep areas, but doable.[1;31m"[0m[31m[0m,
+  trail_id: [1;34m1[0m,
+  author_id: [1;34m5[0m,
+  created_at:
+   [1;34;4mThu[0m, [1;34m27[0m [1;34;4mJul[0m [1;34m2023[0m [1;34m18[0m:[1;34m47[0m:[1;35m11.766194000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at:
+   [1;34;4mThu[0m, [1;34m27[0m [1;34;4mJul[0m [1;34m2023[0m [1;34m18[0m:[1;34m47[0m:[1;35m11.766194000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m,
+ [32m#<Review:0x00007f6a75647aa8[0m
+  id: [1;34m3[0m,
+  body:
+   [31m[1;31m"[0m[31mGreat to have this trail open again. Always a great workout with much satisfaction at the summit.[1;31m"[0m[31m[0m,
+  trail_id: [1;34m1[0m,
+  author_id: [1;34m2[0m,
+  created_at:
+   [1;34;4mThu[0m, [1;34m27[0m [1;34;4mJul[0m [1;34m2023[0m [1;34m18[0m:[1;34m47[0m:[1;35m11.777038000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at:
+   [1;34;4mThu[0m, [1;34m27[0m [1;34;4mJul[0m [1;34m2023[0m [1;34m18[0m:[1;34m47[0m:[1;35m11.777038000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m,
+ [32m#<Review:0x00007f6a75647788[0m
+  id: [1;34m4[0m,
+  body:
+   [31m[1;31m"[0m[31mBeautiful well maintained trail, lots of stairs! It is very luscious and so pretty! Stairs were not as hard as some reviews had said![1;31m"[0m[31m[0m,
+  trail_id: [1;34m1[0m,
+  author_id: [1;34m3[0m,
+  created_at:
+   [1;34;4mThu[0m, [1;34m27[0m [1;34;4mJul[0m [1;34m2023[0m [1;34m18[0m:[1;34m47[0m:[1;35m11.786536000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at:
+   [1;34;4mThu[0m, [1;34m27[0m [1;34;4mJul[0m [1;34m2023[0m [1;34m18[0m:[1;34m47[0m:[1;35m11.786536000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m,
+ [32m#<Review:0x00007f6a75647328[0m
+  id: [1;34m5[0m,
+  body:
+   [31m[1;31m"[0m[31mGreat trail! Lots of boulders and good terrain. Bring an extra layer for the summit.[1;31m"[0m[31m[0m,
+  trail_id: [1;34m1[0m,
+  author_id: [1;34m4[0m,
+  created_at:
+   [1;34;4mThu[0m, [1;34m27[0m [1;34;4mJul[0m [1;34m2023[0m [1;34m18[0m:[1;34m47[0m:[1;35m11.847203000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+  updated_at:
+   [1;34;4mThu[0m, [1;34m27[0m [1;34;4mJul[0m [1;34m2023[0m [1;34m18[0m:[1;34m47[0m:[1;35m11.847203000[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m[32m>[0m]

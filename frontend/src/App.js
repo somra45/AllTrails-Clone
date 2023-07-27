@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/index.js';
 import SignupFormPage from './components/SignupFormPage/index.js';
 import Splash from './components/SplashPage/index.js';
 import Footer from './components/Footer/index.js';
+import TrailShowPage from './components/TrailShowPage/index.js';
 
 function App() {
   return (
@@ -26,8 +27,7 @@ function App() {
       </Route>
       <Route exact path="/trails/:trailId">
         <Navbar />
-        < Splash />
-        < Footer />
+        < TrailShowPage />
       </Route>
     </Switch>
   );

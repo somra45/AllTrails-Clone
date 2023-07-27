@@ -1,4 +1,5 @@
 export async function csrfFetch(url, options) {
+    options = options || {};
     options.method ||= 'GET';
     options.headers ||= {};
 

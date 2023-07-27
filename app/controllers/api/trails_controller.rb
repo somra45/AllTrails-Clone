@@ -1,6 +1,6 @@
 class Api::TrailsController < ApplicationController
     def index
-        @trails = Trail.all
+        @trails = Trail.all.includes(:tags)
 
         render :index
     end

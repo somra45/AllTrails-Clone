@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: favorites
+#
+#  id         :bigint           not null, primary key
+#  favorites  :boolean
+#  trail_id   :bigint           not null
+#  member_id  :bigint           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Favorite < ApplicationRecord
     validates :member_id, :trail_id, presence: true
     validates :favorites, inclusion: { in: [true, false] }

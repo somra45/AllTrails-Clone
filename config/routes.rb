@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :members, only: [:create, :update, :destroy, :show] do 
       resources :favorites, only: [:create, :destroy, :index]
     end
+    resources :reviews, only: [:create, :update, :destroy]
     resource :session, only: [:create, :destroy, :show]
     resources :trails, only: [:index, :show]
   end
