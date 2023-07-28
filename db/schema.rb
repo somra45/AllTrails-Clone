@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_27_205951) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_28_010253) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -104,11 +104,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_27_205951) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name", null: false
+    t.bigint "total_rating"
+    t.bigint "average_rating"
+    t.index ["average_rating"], name: "index_trails_on_average_rating"
     t.index ["difficulty"], name: "index_trails_on_difficulty"
     t.index ["elevation_gain"], name: "index_trails_on_elevation_gain"
     t.index ["length"], name: "index_trails_on_length"
     t.index ["location"], name: "index_trails_on_location"
     t.index ["route_type"], name: "index_trails_on_route_type"
+    t.index ["total_rating"], name: "index_trails_on_total_rating"
     t.index ["trail_id"], name: "index_trails_on_trail_id", unique: true
   end
 

@@ -9,7 +9,7 @@ end
 json.reviews do
     @trail.reviews.includes(:author).each do |review|
         json.set! review.id do
-            json.extract! review, :id, :body, :author_id, :trail_id
+            json.extract! review, :id, :body, :author_id, :trail_id, :rating
             json.author review.author 
         end
     end

@@ -3,19 +3,27 @@ import './TrailShowPage.css'
 import { useParams } from 'react-router-dom';
 import { fetchTrail, fetchTrails } from '../../store/trailsReducer';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Footer from '../Footer';
-
+import TrailReview from './TrailReview';
 
 const TrailShowPage = () => {
     const trailId = useParams().trailId;
     const dispatch = useDispatch();
     const trail = useSelector((state) => state.entities.trails[trailId]);
-    const reviews = Object.values(useSelector((state) => state.entities.reviews))
+    const reviews = Object.values(useSelector((state) => state.entities.reviews));
+    const [totalRating, setTotalRating] = useState(1); 
+    const [averageRating, setAverageRating] = useState(1);
+
+    useEffect(() => {
+        setTotalRating(reviews.map((review) => {return review.rating} ).reduce((partialSum, acc) =>  partialSum + acc ));
+        
+    }, [reviews])
+
     useEffect(() => {
         dispatch(fetchTrail(trailId));
     }, [trailId]) 
-
+    
     return (
         <>
         { trail &&  
@@ -88,12 +96,7 @@ const TrailShowPage = () => {
                         </div>
                         <div className='review-feed-div'>
                             <h1 className='review-header'>Reviews</h1>
-                        {reviews.map((review) => (
-                            <div className='review-div'>
-                                <h2 className='review-author'>{`${review.author.firstname} ${review.author.lastname[0]}`}</h2>
-                                <p className='review'>{review.body}</p>
-                            </div>
-                            ))}
+                            < TrailReview reviews={reviews}/>
                         </div>
                     </div>
                 </div>

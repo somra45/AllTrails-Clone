@@ -1,0 +1,46 @@
+.review-feed-div {
+    margin: 30px 20px;
+}
+
+.review-div {
+    padding: 10px 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.review {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    color: #2b381f;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.review-author {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    color: #2b381f;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+.review-header {
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    color: #2b381f;
+    font-weight: 1000;
+    padding-bottom: 20px;
+    border-bottom: 1px solid lightgray;
+}
+
+.svg-1 {
+    height: 16px;
+    width: 16px;
+    fill: rgba(235, 235, 235, 0.8);
+}
+
+.svg-1-filled {
+    height: 16px;
+    width: 16px;
+    fill: rgb(93, 227, 114);
+}
+

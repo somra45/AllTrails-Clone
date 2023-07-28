@@ -357,14 +357,17 @@ Trail.create!(
     members = Member.all
     memberids = members.map { |member| member.id }
     trails.each do |trail|
+        idx_array = []
         words = trail.description.split(' ')
         words.each do |word| 
-            REVIEWS_DICTIONARY.each do |review|
+            REVIEWS_DICTIONARY.each_with_index do |review, idx|
                 id = memberids.sample
                     current_ids = trail.reviews.map { | review | review.author_id }
-                    current_reviews = trail.reviews.map { | review | review.body }
-                if review.include?(word) && !current_ids.include?(id) && !current_reviews.include?(review)
-                    new_review = Review.create(trail_id: trail.trail_id, body: review, author_id: id, rating: [1, 2, 3, 4, 5].sample)
+                if review.include?(word) && !current_ids.include?(id) && !idx_array.include?(idx)
+                    rating_array = [1, 2, 3, 4, 5]
+                    new_rating = rating_array.sample
+                    new_review = Review.create(trail_id: trail.trail_id, body: review, author_id: id, rating: new_rating)
+                    idx_array.push(idx)
                 end
             end
         end
