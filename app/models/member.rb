@@ -21,7 +21,7 @@ class Member < ApplicationRecord
     validates :session_token, presence: true, uniqueness: { case_sensitive: true }
     validates :password_digest, presence: true, uniqueness: { case_sensitive: true }
 
-    has_one_attached :image
+    has_one_attached :photo
 
     has_many :reviews, 
         class_name: :Review,

@@ -6,7 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-ApplicationRecord.transaction do 
+require "open-uri"
+
     Member.destroy_all
     Trail.destroy_all
     Tag.destroy_all
@@ -54,6 +55,34 @@ ApplicationRecord.transaction do
         firstname: "Clarence",
         lastname: "Smith",
         email: "smith@clarence.com",
+        password: "Demopassword"
+    )
+
+    Member.create!(
+        firstname: "Kin Ka",
+        lastname: "Tse",
+        email: "kinkathaking@kin.com",
+        password: "Demopassword"
+    )
+
+    Member.create!(
+        firstname: "Kyle",
+        lastname: "Ginzberg",
+        email: "kyle@ginz.com",
+        password: "Demopassword"
+    )
+
+    Member.create!(
+        firstname: "Ayce",
+        lastname: "Lecap",
+        email: "ayce@ayce.com",
+        password: "Demopassword"
+    )
+
+    Member.create!(
+        firstname: "Spencer",
+        lastname: "Iascone",
+        email: "spencer@thegoat.com",
         password: "Demopassword"
     )
 
@@ -356,6 +385,7 @@ Trail.create!(
     ]
     members = Member.all
     memberids = members.map { |member| member.id }
+    memberids = memberids.select { |id| id != 1 }
     trails.each do |trail|
         idx_array = []
         words = trail.description.split(' ')
@@ -372,4 +402,12 @@ Trail.create!(
             end
         end
     end
+    
+trails.each_with_index do |trail, idx|
+    ['a', 'b', 'c', 'd', 'e'].each do |letter|
+        trail.images.attach(io: URI.open("https://smalltrails-prod.s3.amazonaws.com/trail-seeds/#{(idx + 1).to_s}/#{(idx + 1).to_s}#{letter}.jpg"),
+            filename: "trail_seeds_" + (idx + 1).to_s + letter + ".jpg"
+        )
+    end
+   
 end

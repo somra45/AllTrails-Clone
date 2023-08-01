@@ -6,7 +6,7 @@ const TrailReview = ({ reviews }) => {
     return (
         <>
             {reviews.map(review => (
-                < TrailReviewItem review={ review }/>
+                < TrailReviewItem review={ review } key={review.id} />
             ))}
         </>
     );

@@ -9,10 +9,11 @@
 
 .review {
     font-family: 'Manrope', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     color: #2b381f;
     font-weight: 500;
     margin-bottom: 20px;
+    line-height: 1.7;
 }
 
 .review-author {
@@ -36,11 +37,34 @@
     height: 16px;
     width: 16px;
     fill: rgba(235, 235, 235, 0.8);
+    padding-bottom: 5px;
 }
 
 .svg-1-filled {
     height: 16px;
     width: 16px;
     fill: rgb(93, 227, 114);
+    padding-bottom: 5px;
 }
 
+.review-time-created {
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    color: rgb(119, 119, 119);
+    font-weight: 600;
+    padding-bottom: 13px;
+}
+
+.edit-delete-container {
+    padding: 10px;
+}
+
+.edit-delete-button {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    padding-right: 10px;
+    text-decoration: underline;
+    border: none;
+    background-color: #fff;
+}

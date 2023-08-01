@@ -6,6 +6,7 @@ import sessionReducer from './session'
 import errorReducer from './errorReducer'
 import trailsReducer from './trailsReducer'
 import reviewReducer from './reviewReducer'
+import uiReducer from './uiReducer'
 
 
 const entitiesReducer = combineReducers({
@@ -17,7 +18,8 @@ const entitiesReducer = combineReducers({
 const rootReducer = combineReducers({
     entities: entitiesReducer,
     session: sessionReducer,
-    errors: errorReducer
+    errors: errorReducer,
+    ui: uiReducer
 });
 
 

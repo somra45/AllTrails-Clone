@@ -18,7 +18,7 @@ export const removeCurrentMember = memberId => {
 };
 
 export const loginMember = (member) => async dispatch => {
-    const response = await csrfFetch('api/session', {
+    const response = await csrfFetch('/api/session', {
         method: 'POST',
         body: JSON.stringify({
             member: member
@@ -30,13 +30,13 @@ export const loginMember = (member) => async dispatch => {
         storeCurrentMember(data.member)
         dispatch(setCurrentMember(data.member))
     } else {
-        throw response
+        throw response;
     }
     return response;
 };
 
 export const logoutMember = (currentMemberId) => async dispatch => {
-    const response = await csrfFetch('api/session', {
+    const response = await csrfFetch('/api/session', {
         method: 'DELETE',
     });
     storeCurrentMember();
@@ -44,15 +44,21 @@ export const logoutMember = (currentMemberId) => async dispatch => {
 };
 
 export const signupMember = (member) => async dispatch => {
-    const response = await csrfFetch('api/members', {
+    const response = await csrfFetch('/api/members', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(member)
     })
-
-    const data = response.json();
-    storeCurrentMember(data.member);
-    dispatch(setCurrentMember(data.member));
+    if (response.ok) {
+        const data = response.json();
+        if (data.errors) {          
+            storeCurrentMember(data.member);
+            dispatch(setCurrentMember(data.member));
+        }
+    } else {
+        throw response;
+    }
+   
 }
 
 const storeCurrentMember = member => {

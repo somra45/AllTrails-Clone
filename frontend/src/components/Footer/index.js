@@ -8,10 +8,10 @@ const Footer = () => {
                 <div className='links-div'>
                     <h1 className='footer-header'>Connect with us</h1>
                     <a className='links' href='https://github.com/somra45'>
-                        <img src='./assets/images/github-logo.png' alt='github-logo'/>
+                        <img src='/assets/images/github-logo.png' alt='github-logo'/>
                     </a>
                     <a className='links' href='https://www.linkedin.com/in/harvinder-somra-39ba536a/'>
-                        <img src='./assets/images/linkedin-logo.png' alt='linkedin-logo' />
+                        <img src='/assets/images/linkedin-logo.png' alt='linkedin-logo' />
                     </a>
                 </div>
             </div>

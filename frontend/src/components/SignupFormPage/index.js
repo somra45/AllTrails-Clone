@@ -15,7 +15,7 @@ const SignupFormPage = () => {
     const [errors, setErrors] = useState([]);
 
     if (sessionMember) {
-        return <Redirect to='/login' />
+        return <Redirect to='/' />
     }
 
     const handleSubmit = (e) => {
