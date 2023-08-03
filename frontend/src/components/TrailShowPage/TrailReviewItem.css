@@ -68,3 +68,22 @@
     border: none;
     background-color: #fff;
 }
+
+.review-author-container {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+}
+
+.profile-picture {
+    height: 50px;
+    width: 50px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+}
+
+.review-author-name-container {
+    padding-left: 10px;
+    padding-top: 10px;
+}

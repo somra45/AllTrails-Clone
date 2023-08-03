@@ -24,12 +24,17 @@ const TrailReviewItem = ( {review} ) => {
         e.preventDefault();
         dispatch(deleteReview(review.id));
     };
-
         return (
         <>
         { review && <div className='review-div'>
-            <h2 className='review-author'>{`${review.author.firstname} ${review.author.lastname[0]}`}</h2>
-            <p className='review-time-created'> {convertTime(review.createdAt)}</p>
+            <div className='review-author-container'>
+                <div className="profile-picture" style={{backgroundImage: `url(${review.photoUrl})`}}></div>
+                <div className='review-author-name-container'>
+                    <h2 className='review-author'>{`${review.author.firstname} ${review.author.lastname[0]}`}</h2>
+                    <p className='review-time-created'> {convertTime(review.createdAt)}</p>
+                </div>
+            </div>
+         
             <div>
                 <svg className={(review.rating > 0) ? 'svg-1-filled' : 'svg-1'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="presentation" 
                     aria-hidden="true" focusable="false" data-testid="star-filled" >

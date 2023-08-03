@@ -1,0 +1,77 @@
+.image-slider {
+    width: 100%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 80px;
+}
+
+.right-arrow {
+    position: absolute;
+    top: 65%;
+    right: 32px;
+    font-size: 3rem;
+    color: #000;
+    z-index: 10;
+    cursor: pointer;
+    user-select: none;
+}
+
+.left-arrow {
+  position: absolute;
+  top: 65%;
+  left: 32px;
+  font-size: 3rem;
+  color: #000;
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+}
+
+.slide {
+    opacity: 0;
+    transition-duration: 1.5s ease;
+  }
+  
+  .slide.active {
+    opacity: 1;
+    transition-duration: 1.5s;
+    transform: scale(1.08);
+  }
+
+  .slider {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .slide-image {
+    max-width: 1200px;
+    max-height: 500px;
+    border-radius: 10px;
+  }
+
+  .photo-page-details-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+  }
+
+  .photo-page-header {
+    font-family: 'Manrope', sans-serif;
+    font-size: 38px;
+    font-weight: 1000;
+    color: #2b381f;
+  }
+
+  .photo-page-location {
+    font-family: 'Manrope', sans-serif;
+    font-size: 28px;
+    font-weight: 1000;
+    color: #2b381f;
+    padding-top: 20px;
+  }

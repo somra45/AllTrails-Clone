@@ -7,12 +7,14 @@ import errorReducer from './errorReducer'
 import trailsReducer from './trailsReducer'
 import reviewReducer from './reviewReducer'
 import uiReducer from './uiReducer'
+import searchReducer from './searchReducer'
 
 
 const entitiesReducer = combineReducers({
   members: memberReducer,
   trails: trailsReducer,
-  reviews: reviewReducer
+  reviews: reviewReducer,
+  search: searchReducer
 })
 
 const rootReducer = combineReducers({

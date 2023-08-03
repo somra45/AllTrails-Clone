@@ -7,7 +7,7 @@ export const REMOVE_TRAIL = 'trails/REMOVE_TRAIL';
 
 
 export const fetchTrails = () => async dispatch => {
-    const response = await csrfFetch('api/trails');
+    const response = await csrfFetch('/api/trails');
 
     if (response.ok) {
         const data = await response.json();

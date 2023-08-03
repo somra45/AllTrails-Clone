@@ -60,7 +60,7 @@ const reviewReducer = (state = {}, action) => {
             newState = {...state, ...action.review.review}
             return newState
         case RECEIVE_TRAIL:
-            newState = {...state, ...action.trail.reviews}
+            newState = {...action.trail.reviews}
             return newState;
         case REMOVE_REVIEW: 
             delete newState[action.reviewId]

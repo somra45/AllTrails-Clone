@@ -37,3 +37,11 @@
     font-family: 'Manrope', sans-serif;
     padding-bottom: 15px;
 }
+
+.logo-footer {
+    width: 88px;
+    height: 88px;
+    margin-left: 10px;
+    position: relative;
+    bottom: 27px;
+}

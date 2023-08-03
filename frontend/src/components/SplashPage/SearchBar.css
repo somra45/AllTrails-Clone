@@ -1,0 +1,113 @@
+#search-input {
+    min-width: 100%;
+    min-height: 77px;
+    border-radius: 9999px;
+    z-index: 3;
+    box-shadow: 0 0 16px rgba(0,0,0,0.8);
+    padding-left: 40px;
+    font-family: 'Manrope', sans-serif;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+#search-input:focus {
+    border: 0px;
+    outline: none;
+    min-width: 100%;
+    min-height: 77px;
+    border-radius: 9999px;
+    z-index: 3;
+    padding-left: 40px;
+    box-shadow: 0 0 16px rgba(0,0,0,0.8);
+}
+
+#search-bar-container {
+    max-height: 557px;
+    width: 550px;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 9999px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 3;
+    right:2%;
+}
+
+#search-dropdown {
+    position: absolute;
+    min-width: 592px;
+    top: -50%;
+    z-index: 1;
+    overflow-y: scroll;
+    margin-top: 90px;
+    max-height: 300px;
+}
+
+.search-result-item {
+    background-color: #fff;
+    border: 1px solid rgb(180, 180, 180);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-width: 100%;
+}
+.search-result-item:hover {
+    background-color: rgb(213, 213, 213);
+}
+
+.search-result-item-name {
+    font-family: 'Manrope', sans-serif;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px;
+}
+
+.search-result-item-location {
+    font-family: 'Manrope', sans-serif;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+#search-button {
+    font-family: 'Manrope', sans-serif;
+    border-color: #2c5601;
+    background-color: #2c5601;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    min-height: 54px;
+    max-height: 54px;
+    padding: 0 24px;
+    position: relative;
+    flex-direction: row;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    min-width: 54px;
+    max-width: 54px;
+    border-radius: 100%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    right: 14%;
+    z-index: 4;
+}
+
+.arrow {
+    position: relative;
+    right: 350%;
+    top: 2px;
+}
+
+.dropdown-space {
+    background-color: #fff;
+    height:50px;
+}

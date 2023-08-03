@@ -11,14 +11,17 @@ import { openModal } from '../../store/modalReducer';
 import Modal from '../Modal/modal';
 import MapWrapper from '../Map';
 import TrailIndexShow from './TrailIndexShow';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
 const TrailShowPage = () => {
     const trailId = useParams().trailId;
     const dispatch = useDispatch();
     const trail = useSelector((state) => state.entities.trails[trailId]);
     const reviews = Object.values(useSelector((state) => state.entities.reviews));
+    const currentMember = useSelector(state => state.session.member)
     const [totalRating, setTotalRating] = useState(1); 
     const [averageRating, setAverageRating] = useState(1);
+    const history = useHistory();
     let ratingCount1 = 0;
     let ratingCount2 = 0;
     let ratingCount3 = 0;
@@ -49,13 +52,22 @@ const TrailShowPage = () => {
 
      const handleClick = (e) => {
         e.preventDefault();
-        dispatch(openModal('createreview'));
+        if (currentMember) {
+            dispatch(openModal('createreview'));
+        } else {
+            history.push('/login')
+        }
      };
 
     useEffect(() => {
         dispatch(fetchTrail(trailId))
 
     }, [trailId]) 
+
+    const openPhotos = (e) => {
+        e.preventDefault();
+        history.push(`/trails/${trailId}/photos`);
+    }
 
     return (
         <>
@@ -70,7 +82,7 @@ const TrailShowPage = () => {
                         <h2 className='show-header-attribute'>{trail.location}</h2>
                     </div>
                     <div className='links-bar'>
-                        <div className='link'>
+                        <div className='link' onClick={openPhotos} > 
                             <div className='links-circle-div'>
                                 <img src='../assets/images/Show-page-icons/camera.svg' alt='photos'></img>
                             </div>

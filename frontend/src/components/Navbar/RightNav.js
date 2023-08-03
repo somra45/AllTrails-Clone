@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom';
 
 const RightNav = () => {
     const currentMember = sessionStorage.getItem('currentMember');
+    const member = useSelector(state => state.session.member)
     const dispatch = useDispatch();
 
     const handleClick = (e) => {
@@ -25,7 +26,12 @@ const RightNav = () => {
                     style={{ textDecoration: 'none' }}><p id='button-text' >Log In</p></Link></button> 
                     <button className ='nav-button' onClick={handleClick}><Link to='/signup' 
                     style={{ textDecoration: 'none' }}><p id='button-text' >Sign Up</p></Link> </button> </>
-                    : <button className ='nav-button' onClick={handleLogout}><p id='button-text' >Log Out</p></button>  
+                    : <>
+                            <div className='logged-in-container'>
+                                <button className ='nav-button' onClick={handleLogout}><p id='button-text' >Log Out</p></button>  
+                                <div className="profile-photo" style={{ backgroundImage: `url(${member.photoUrl})`}}></div>  
+                            </div>
+                      </>
                     }
                 
             </div>

@@ -58,7 +58,6 @@ export const signupMember = (member) => async dispatch => {
     } else {
         throw response;
     }
-   
 }
 
 const storeCurrentMember = member => {

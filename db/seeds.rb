@@ -60,7 +60,7 @@ require "open-uri"
     )
 
     Member.create!(
-        firstname: "Kin Ka",
+        firstname: "Kin",
         lastname: "Tse",
         email: "kinkathaking@kin.com",
         password: "Demopassword"
@@ -468,3 +468,13 @@ Trail.all.sort_by{ |t| t.id }.each_with_index do |trail, idx|
     end
    
 end
+
+Member.all.each_with_index do |member, idx|
+    if idx != 0
+        member.photo.attach(io: URI.open("https://smalltrails-prod.s3.amazonaws.com/photos/#{member.firstname}.png"),
+            filename: "photos_" + member.firstname + ".png" 
+        )
+    end
+end
+
+

@@ -14,4 +14,11 @@ class Api::TrailsController < ApplicationController
             render json: { errors: ['Could not find trail']}, status: 422
         end
     end
+
+    def search
+        query = params[:query]
+        @trails = Trail.where('name ILIKE ? OR location ILIKE ? OR description ILIKE ?', "%#{query}%", "%#{query}%", "%#{query}%")
+
+        render :search
+    end
 end
