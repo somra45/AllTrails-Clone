@@ -1,4 +1,5 @@
 import { csrfFetch } from "./csrf";
+import { REMOVE_REVIEW } from "./reviewReducer";
 
 export const RECEIVE_TRAILS = 'trails/RECEIVE_TRAILS';
 export const RECEIVE_TRAIL = 'trails/RECEIVE_TRAIL';

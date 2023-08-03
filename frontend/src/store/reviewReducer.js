@@ -19,10 +19,11 @@ export const addReview = (review) => async dispatch => {
     } else {
         // TODO: handle error
     }
+    return response;
 }
 
 export const editReview = (review) => async dispatch => {
-    const response = await csrfFetch('/api/reviews', {
+    const response = await csrfFetch(`/api/reviews/${review.review.id}`, {
         method: 'PATCH',
         body: JSON.stringify(review)
     })
@@ -33,10 +34,11 @@ export const editReview = (review) => async dispatch => {
             review: data
         })
     }
+    return response;
 }
 
 export const deleteReview = (reviewId) => async dispatch => {
-    const response = await csrfFetch('/api/reviews', {
+    const response = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: 'DELETE',
         body: JSON.stringify(reviewId)
     })
@@ -55,13 +57,14 @@ const reviewReducer = (state = {}, action) => {
     let newState = { ...state }
     switch(action.type) {
         case RECEIVE_REVIEW:
-            newState = {...state, ...action.review}
+            newState = {...state, ...action.review.review}
             return newState
         case RECEIVE_TRAIL:
             newState = {...state, ...action.trail.reviews}
             return newState;
         case REMOVE_REVIEW: 
-            delete newState.trail.reviews[action.reviewId]
+            delete newState[action.reviewId]
+            return newState
         default: 
             return newState;
     }

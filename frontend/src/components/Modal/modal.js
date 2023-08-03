@@ -22,7 +22,7 @@ const Modal = ( ) => {
       }
 
     return (
-          component
+        component
     );
 };
 

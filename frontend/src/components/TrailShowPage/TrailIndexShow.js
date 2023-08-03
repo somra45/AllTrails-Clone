@@ -2,13 +2,15 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchTrails } from '../../store/trailsReducer';
 import { useSelector } from 'react-redux';
-import './TrailsIndex.css'
+import './TrailIndexShow.css'
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
-const TrailsIndex = () => {
+const TrailIndexShow = ( {currentTrail} ) => {
     const dispatch = useDispatch();
-    let trails = useSelector((state) => state.entities.trails)
-    trails = Object.values(trails)
+    let alltrails = useSelector((state) => state.entities.trails);
+    alltrails = Object.values(alltrails);
+    let currentState = currentTrail.location.includes('CA') ? 'CA' : 'NY';
 
     useEffect(() => {
         dispatch(fetchTrails());
@@ -16,11 +18,12 @@ const TrailsIndex = () => {
 
     return (
         <>
-            <div className='trails-index-div'>
-            {trails.map((trail) => (
+            <h1 className='trails-show-index-heading'> Nearby Trails </h1>
+            <div className='trails-show-div'>
+            {alltrails.map((trail) => ( (currentTrail !== trail && trail.location.includes(currentState)) ?
                 <Link to={`/trails/${trail.trailId}`} className='trail-link' >
                     <div className='trail-div'>
-                        <div className='trail-image-div'>
+                        <div className='trail-image-show-div'>
                             <img className='trail-image'src={`${trail.imageUrls[0]}`}/>
                         </div>
                         <p className='trail-tag'>{trail.difficulty}</p>
@@ -29,10 +32,10 @@ const TrailsIndex = () => {
                         <p className='trail-tag'>Length: {trail.length} mi</p>
                     </div>
                 </Link>
-                ))} 
+                : null))} 
             </div>
         </>
     )
 }
 
-export default TrailsIndex
+export default TrailIndexShow

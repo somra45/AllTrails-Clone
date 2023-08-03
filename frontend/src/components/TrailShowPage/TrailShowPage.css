@@ -67,8 +67,15 @@
 }
 
 .all-attributes-div {
-    width: 70%;
+    min-width: 65%;
+    max-width: 65%;
     border-right: 1px solid lightgray;
+}
+
+.show-information-div {
+    display: flex;
+    flex-direction: row;
+    max-width: 100%;
 }
 
 .ler-attribute-heading {
@@ -333,4 +340,19 @@
 
 .write-review-button:hover {
     background-color: #2b381f;
+}
+
+.nearby-trails-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.maps-div {
+    border-radius: 15px;
+    margin: 20px;
+}
+
+.right-bar-div {
+    width: 100%;
 }

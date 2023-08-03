@@ -6,11 +6,11 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Footer from '../Footer';
 import TrailReview from './TrailReview';
-import CreateReviewForm from '../CreateReviewForm';
 import TrailImages from './TrailImages';
 import { openModal } from '../../store/modalReducer';
 import Modal from '../Modal/modal';
-import EditReviewForm from '../EditReviewForm';
+import MapWrapper from '../Map';
+import TrailIndexShow from './TrailIndexShow';
 
 const TrailShowPage = () => {
     const trailId = useParams().trailId;
@@ -19,7 +19,6 @@ const TrailShowPage = () => {
     const reviews = Object.values(useSelector((state) => state.entities.reviews));
     const [totalRating, setTotalRating] = useState(1); 
     const [averageRating, setAverageRating] = useState(1);
-    const [closeModal, setCloseModal] = useState(true);
     let ratingCount1 = 0;
     let ratingCount2 = 0;
     let ratingCount3 = 0;
@@ -50,12 +49,14 @@ const TrailShowPage = () => {
 
      const handleClick = (e) => {
         e.preventDefault();
-        dispatch(openModal('createreview'))
+        dispatch(openModal('createreview'));
      };
 
     useEffect(() => {
-        dispatch(fetchTrail(trailId));
+        dispatch(fetchTrail(trailId))
+
     }, [trailId]) 
+
     return (
         <>
         { trail && trail.imageUrls &&
@@ -104,7 +105,8 @@ const TrailShowPage = () => {
                         </div>
                         
                     </div>
-                    <div className='all-attributes-div'>
+                    <div className='show-information-div'>
+                        <div className='all-attributes-div'>
                         <div className='ler-attribute-div'>
                             <div>
                                 <p className='ler-attribute-heading'>Length</p>
@@ -141,7 +143,7 @@ const TrailShowPage = () => {
                                                 </svg>
                                             </div>
                                             <div className='rating-bar-container' >
-                                                <span className='rating-bar-span' style={{width: `${ratingCount5 * 20}%`}}></span>
+                                                <span className='rating-bar-span' style={{width: `${ratingCount5 * 15}%`}}></span>
                                             </div>
                                         </div>
                                             
@@ -155,7 +157,7 @@ const TrailShowPage = () => {
                                                 </svg>
                                             </div>
                                             <div className='rating-bar-container' >
-                                                <span className='rating-bar-span' style={{width: `${ratingCount4 * 20}%`}}></span>
+                                                <span className='rating-bar-span' style={{width: `${ratingCount4 * 15}%`}}></span>
                                             </div>
                                         </div>
                                             
@@ -169,7 +171,7 @@ const TrailShowPage = () => {
                                                 </svg>
                                             </div>
                                             <div className='rating-bar-container' >
-                                                <span className='rating-bar-span' style={{width: `${ratingCount3 * 20}%`}}></span>
+                                                <span className='rating-bar-span' style={{width: `${ratingCount3 * 15}%`}}></span>
                                             </div>
                                         </div>
                                             
@@ -183,7 +185,7 @@ const TrailShowPage = () => {
                                                 </svg>
                                             </div>
                                             <div className='rating-bar-container' >
-                                                <span className='rating-bar-span' style={{width: `${ratingCount2 * 20}%`}}></span>
+                                                <span className='rating-bar-span' style={{width: `${ratingCount2 * 15}%`}}></span>
                                             </div>
                                         </div>
                                             
@@ -197,7 +199,7 @@ const TrailShowPage = () => {
                                                 </svg>
                                             </div>
                                             <div className='rating-bar-container' >
-                                                <span className='rating-bar-span' style={{width: `${ratingCount1 + 20}%`}}></span>
+                                                <span className='rating-bar-span' style={{width: `${ratingCount1 + 15}%`}}></span>
                                             </div>
                                         </div>
                                 </div>
@@ -235,10 +237,21 @@ const TrailShowPage = () => {
                                 <button onClick={handleClick} className='write-review-button'>Write review
                                 </button>
                             </div>
-                            < TrailReview reviews={reviews}/>
+                            < TrailReview />
                         </div>
                         }
                     </div>
+                    <div className='right-bar-div'>
+                        <div className='maps-div'>
+                            < MapWrapper trail={ trail }/>
+                        </div>   
+                        <div className='nearby-trails-div'>
+                            <TrailIndexShow currentTrail={ trail } />
+                        </div>
+                    </div>
+                    
+                    </div>
+                   
                 </div>
             </div>
         }

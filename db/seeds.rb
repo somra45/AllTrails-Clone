@@ -17,7 +17,8 @@ require "open-uri"
     TAG_DICTIONARY = ['nature', 'mountain biking', 'birding', 'road biking', 'hike', 
         'mountain', 'summit', 'peak', 'marsh', 'wetland', 'challenging', 
         'views', 'falls', 'waterfalls', 'family', 'families', 'easy', 'novice', 'moderate', 'steep', 
-        'loop', 'beach', 'bugs', 'muddy', 'wet', 'mud', 'bird watching', 'rocky', 'forest']
+        'loop', 'beach', 'bugs', 'muddy', 'wet', 'mud', 'bird watching', 'rocky', 'forest', 'wheelchair', 
+        'walking', 'running', 'camping']
     ActiveRecord::Base.connection.reset_pk_sequence!('trails')
     ActiveRecord::Base.connection.reset_pk_sequence!('reviews')
     ActiveRecord::Base.connection.reset_pk_sequence!('tags')
@@ -97,7 +98,9 @@ require "open-uri"
          very popular area for birding, mountain biking, and road biking, so you 
          will likely encounter other people while exploring. Dogs on a leash are 
          welcome. The trail is open year-round and is beautiful to visit anytime.',
-        difficulty: 'Easy'
+        difficulty: 'Easy',
+        lat: 40.66060,
+        lng: -73.97006
     )
 
     Trail.create!(
@@ -111,7 +114,9 @@ require "open-uri"
         urbanized area providing important habitat for birds, fish, crabs, and 
         other animals. The flat trail through a tidal marsh is an easy walk and 
         is very kid-friendly.',
-        difficulty: 'Easy'
+        difficulty: 'Easy',
+        lat: 40.79497, 
+        lng: -74.04632
     )
 
     Trail.create!(
@@ -125,7 +130,9 @@ require "open-uri"
         in Marine Park, Brooklyn, New York. The trail is considered to be easy, 
         with some flat and sandy sections. The trail passes through a salt marsh, 
         which is a wetland ecosystem that is home to a variety of plants and animals. The highlight of the hike is the opportunity to see the salt marsh at different stages of the tide, as well as the birds and other wildlife that call the marsh home. The Marine Park Salt Marsh Trail is a great place to go for a walk, birdwatch, or learn about the salt marsh ecosystem. The trail is open year-round, but it is best to visit during the spring or fall when the weather is mild.',
-        difficulty: 'Easy'
+        difficulty: 'Easy',
+        lat: 40.60362,
+        lng: -73.92856
     )
 
     Trail.create!(
@@ -142,7 +149,9 @@ require "open-uri"
         and waterfalls. The highlight of the hike is Hemlock Falls, a 50-foot 
         waterfall that cascades over a rocky cliff. The falls are most impressive 
         after a heavy rain, but they can be enjoyed year-round.',
-        difficulty: 'Moderate'
+        difficulty: 'Moderate',
+        lat: 40.75060,
+        lng: -74.28847
     )
     Trail.create!(
         trail_id: 5,
@@ -155,7 +164,9 @@ require "open-uri"
         The trail is known for its steep ascents and challenging rock scrambles.
          The views from the top are worth the effort, though, as you can see the 
          Hudson River and the Catskill Mountains.',
-        difficulty: 'Difficult'
+        difficulty: 'Difficult',
+        lat: 41.48860,
+        lng: -73.95319
     )
 
 Trail.create!(
@@ -168,7 +179,9 @@ Trail.create!(
         description: 'The Devils Path is a 23-mile trail in the Catskill Mountains.
          It is considered by many to be one of the most difficult hikes in New York.
          It is a challenging, multi-day hike that takes you over five peaks, including 3,544-foot Slide Mountain, the highest peak in the Catskills.',
-        difficulty: 'Extremely Difficult'
+        difficulty: 'Extremely Difficult',
+        lat: 42.13411, 
+        lng: -74.10456
     )
 
 Trail.create!(
@@ -179,8 +192,14 @@ Trail.create!(
         route_type: 'Out and Back',
         elevation_gain: 3500,
         description: 'Mount Marcy is a 14-mile round-trip hike to the summit of 
-        the highest point in New York State. The trail is challenging, but the views from the top are worth it.',
-        difficulty: 'Extremely Difficult'
+        the highest point in New York State. The trail is challenging, but the 
+        views from the top are worth it.  This is a very popular area for backpacking,
+         camping, and hiking, so you will likely encounter other people while exploring. 
+         Dogs are welcome, but must be on a leash.',
+        difficulty: 'Extremely Difficult',
+        lat: 44.11303, 
+        lng: -73.92313
+
     )
 
 Trail.create!(
@@ -192,8 +211,12 @@ Trail.create!(
         elevation_gain: 2000,
         description: 'Cascade Mountain and Porter Mountain is an 8.4-mile loop hike 
         that takes you over two of the Catskills most popular peaks. The trail is 
-        challenging, with some steep ascents and descents, but the views from the top are amazing.',
-        difficulty: 'Difficult'
+        challenging, with some steep ascents and descents, but the views from the top are amazing. 
+        The trail is open year-round and is beautiful to visit anytime. Dogs are 
+        welcome, but must be on a leash.',
+        difficulty: 'Difficult',
+        lat: 44.21864, 
+        lng: -73.86054
     )
 
 Trail.create!(
@@ -204,8 +227,15 @@ Trail.create!(
         route_type: 'Loop',
         elevation_gain: 1000,
         description: 'Bull Hill is a 4.8-mile loop hike that is known for its 
-        challenging rock scrambles and its panoramic views of the Hudson River Valley.',
-        difficulty: 'Difficult'
+        challenging rock scrambles and its panoramic views of the Hudson River Valley. 
+        Shortly before the top of the mountain, there is a rocky outcrop (which has
+         "NYC" written on it) just to the right of the trail, from which you get an 
+         excellent view south along the Hudson River, including the NYC skyline. The 
+         best times to visit this trail are April through October. Dogs are welcome, 
+         but must be on a leash.',
+        difficulty: 'Difficult',
+        lat: 41.43920,
+        lng: -73.95591
     )
  
     Trail.create!(
@@ -222,7 +252,9 @@ Trail.create!(
            hikers. The trail is open year-round and is beautiful to visit anytime. 
            Dogs are welcome and may be off-leash in some areas. This is a very
            popular area for hiking, running, and walking.',
-        difficulty: 'Easy'
+        difficulty: 'Easy',
+        lat: 37.78592,
+        lng: -122.50323
     )
 
 Trail.create!(
@@ -237,7 +269,9 @@ Trail.create!(
          of the Golden Gate Bridge, the Marin Headlands, and the city of San 
          Francisco. The trail is mostly flat and easy to follow, making it a great
           option for families and novice hikers.',
-        difficulty: 'Easy'
+        difficulty: 'Easy',
+        lat: 37.82797,
+        lng: -122.48165
     )
 
 Trail.create!(
@@ -252,7 +286,9 @@ Trail.create!(
          including the Japanese Tea Garden, the California Academy of Sciences, and 
          the DeYoung Museum. The trail is mostly flat and easy to follow, making it
           a great option for families and novice hikers.',
-        difficulty: 'Easy'
+        difficulty: 'Easy',
+        lat: 37.76974,
+        lng: -122.48619
     )
 
 Trail.create!(
@@ -265,8 +301,12 @@ Trail.create!(
         description: 'The Steep Ravine Trail is a 4.4-mile out-and-back trail in
          Marin County. The trail offers stunning views of the Pacific Ocean and 
          the Marin Headlands. The trail is moderately difficult, with some steep 
-         sections.',
-        difficulty: 'Moderate'
+         sections. The water rushing through Webb Creek has created a spectacularly steep, 
+         lush canyon shaded by towering redwood trees and populated with a wide variety of 
+         local flora and fauna.',
+        difficulty: 'Moderate',
+        lat: 37.89520,
+        lng: -122.61528
     )
 
 
@@ -281,8 +321,11 @@ Trail.create!(
         winds through a redwood forest. The trail is moderately difficult, with
          some steep sections. The redwoods are some of the tallest trees in the
           world, and the trail offers a unique opportunity to experience their 
-          beauty.',
-        difficulty: 'Moderate'
+          beauty. Popular activities include hiking, bird watching, biking, as well 
+          as shuttle services, trail is wheelchair friendly.',
+        difficulty: 'Moderate',
+        lat: 37.89715,
+        lng: -122.58101
     )
 
 Trail.create!(
@@ -296,7 +339,9 @@ Trail.create!(
         the Marin Headlands. The trail offers stunning views of the Golden Gate 
         Bridge, Alcatraz Island, and the Pacific Ocean. The trail is moderately
          difficult, with some steep sections.',
-        difficulty: 'Moderate'
+        difficulty: 'Moderate',
+        lat: 37.86092,
+        lng: -122.53598
     )
 
     Trail.create!(
@@ -309,8 +354,11 @@ Trail.create!(
         description: 'The Marin Headlands Hike is a 10.5-mile loop trail in the 
         Marin Headlands. The trail offers stunning views of the Golden Gate Bridge, 
         Alcatraz Island, and the Pacific Ocean. The trail is challenging, with some 
-        steep sections.',
-        difficulty: 'Difficult'
+        steep sections.  This is a very popular area for birding, hiking, and horseback
+         riding, so you will likely encounter other people while exploring.',
+        difficulty: 'Difficult',
+        lat: 37.82729,
+        lng: -122.49954
     )
 
 Trail.create!(
@@ -322,8 +370,13 @@ Trail.create!(
         elevation_gain: 4000,
         description: 'Mt. Tamalpais Hike is a 15-mile out-and-back trail in Marin 
         County. The trail offers stunning views of the San Francisco Bay Area. The 
-        trail is challenging, with some steep sections.',
-        difficulty: 'Difficult'
+        trail is challenging, with some steep sections. There are two significant waterfalls 
+        along Webb Creek in Steep Ravine. The upper falls requires climbing up the waterfall 
+        via a 10 ft. high ladder. The waterfalls on Mount Tamalpais are best seen in the 
+        winter or early spring months or after there has been a lot of rain.',
+        difficulty: 'Difficult',
+        lat: 37.92482,
+        lng: -122.59664
     )
 
 Trail.create!(
@@ -333,10 +386,14 @@ Trail.create!(
         length: 7.2,
         route_type: 'Uphill',
         elevation_gain: 2600,
-        description: 'The Dipsea Trail is a 7.2-mile uphill trail in Stinson Beach. 
+        description: 'The Dipsea Trail begins in the town of Stinson Beach and is a 7.2 mile hike. 
+        It climbs gradually with many ocean views until you reach its junction with the Steep Ravine Trail.
         The trail offers stunning views of the Pacific Ocean. The trail is 
-        challenging, with some steep sections.',
-        difficulty: 'Difficult'
+        challenging, with some steep sections. You will need to leave pups at home — 
+        dogs are not allowed on this trail.',
+        difficulty: 'Difficult',
+        lat: 37.89803,
+        lng: -122.63716
     )
 
     TAG_DICTIONARY.each do |tag|
@@ -402,7 +459,7 @@ Trail.create!(
             end
         end
     end
-    
+
 trails.each_with_index do |trail, idx|
     ['a', 'b', 'c', 'd', 'e'].each do |letter|
         trail.images.attach(io: URI.open("https://smalltrails-prod.s3.amazonaws.com/trail-seeds/#{(idx + 1).to_s}/#{(idx + 1).to_s}#{letter}.jpg"),

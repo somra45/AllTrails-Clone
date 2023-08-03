@@ -13,6 +13,7 @@
 class Review < ApplicationRecord
     validates :body, :trail_id, :author_id, presence: true
     validates :author_id, uniqueness: { scope: :trail_id}
+    validates :body, length: {in: 3..255}
     
     belongs_to :trail,
         class_name: :Trail,

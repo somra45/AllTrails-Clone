@@ -96,7 +96,7 @@ const sessionReducer = (state = initialState, action) => {
             return newState;
         case LOGIN_MEMBER:
             if (action.member) {
-                newState.member = action.member.id
+                newState.member = action.member
             }
             return newState;
         default:

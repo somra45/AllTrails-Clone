@@ -25,13 +25,15 @@
     top: 17%;
     z-index: 99;
 }
+
 .create-review-modal {
+    z-index: 10;
     position: fixed;
     top: 0;
     left: 0;
-    width:100%;
+    width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.75) !important;
 }
 
 .create-review-form {
@@ -39,7 +41,6 @@
     flex-direction: column;
     align-items: flex-start;
     overflow: hidden;
-    overflow-y: scroll;
     padding: 20px 20px;
 }
 
@@ -71,6 +72,25 @@
     width: 100%;
     padding-bottom: 120px;
     border: 1px solid rgb(190, 190, 190);
+    border-radius: 8px;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    color: #2b381f;
+    font-weight: 500;
+    resize: none;
+    overflow: hidden;
+    line-height: 1.7;;
+}
+
+.create-review-field-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 120px;
+    border: 1px solid rgb(160, 0, 0);
     border-radius: 8px;
     word-wrap: break-word;
     word-break: break-all;
@@ -143,4 +163,18 @@
 
 .star-div {
     padding-right: 6px;
+}
+
+.create-errors-list-item {
+    font-family: 'Manrope', sans-serif;
+    margin: 0px;
+    margin-bottom: 15px;
+    align-self: flex-start;
+    padding: 0px;
+    color: rgb(163, 0, 0);
+    font-size: 11px;
+}
+
+.create-errors-list {
+    padding:10px;
 }

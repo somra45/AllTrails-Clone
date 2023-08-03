@@ -10,6 +10,12 @@
 
 .svg-edit-filled {
     fill: rgb(93, 227, 114);
+    transition: transform 200ms ease-in-out 0s;
+    transform: rotate(0deg);
+    height: 32px;
+    width: 32px;
+    padding-bottom: 5px;
+    cursor: pointer;
 }
 
 .edit-review-div {
@@ -26,7 +32,8 @@
     left: 0;
     width:100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 0.75) !important;
+    z-index: 10;
 }
 
 .edit-review-form {
@@ -34,7 +41,6 @@
     flex-direction: column;
     align-items: flex-start;
     overflow: hidden;
-    overflow-y: scroll;
     padding: 20px 20px;
 }
 
@@ -75,7 +81,7 @@
     font-weight: 500;
     resize: none;
     overflow: hidden;
-    line-height: 1.7;;
+    line-height: 1.7;
 }
 
 .edit-review-field:focus {
@@ -117,7 +123,6 @@
     line-height: 1.5;
     height: 48px;
     padding: 24px 24px;
-    margin-top: 20px;
     position: relative;
     display: inline-flex;
     flex-direction: row;
@@ -138,4 +143,37 @@
 
 .star-div {
     padding-right: 6px;
+}
+
+.edit-errors-list {
+    padding:10px;
+}
+
+.edit-errors-list-item {
+    font-family: 'Manrope', sans-serif;
+    margin: 0px;
+    margin-bottom: 15px;
+    align-self: flex-start;
+    padding: 0px;
+    color: rgb(163, 0, 0);
+    font-size: 11px;
+}
+
+.edit-review-field-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 120px;
+    border: 1px solid rgb(163, 0, 0);
+    border-radius: 8px;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    color: #2b381f;
+    font-weight: 500;
+    resize: none;
+    overflow: hidden;
+    line-height: 1.7;
 }

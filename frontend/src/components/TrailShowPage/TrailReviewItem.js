@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './TrailReviewItem.css'
 import { deleteReview, editReview } from '../../store/reviewReducer';
 import { openModal } from '../../store/modalReducer';
+import Modal from '../Modal/modal';
 
 
 const TrailReviewItem = ( {review} ) => {
@@ -23,9 +24,10 @@ const TrailReviewItem = ( {review} ) => {
         e.preventDefault();
         dispatch(deleteReview(review.id));
     };
-    return (
+
+        return (
         <>
-        <div className='review-div'>
+        { review && <div className='review-div'>
             <h2 className='review-author'>{`${review.author.firstname} ${review.author.lastname[0]}`}</h2>
             <p className='review-time-created'> {convertTime(review.createdAt)}</p>
             <div>
@@ -56,13 +58,14 @@ const TrailReviewItem = ( {review} ) => {
                 </svg>
             </div>
             <p className='review'>{review.body}</p>
-            {review.authorId === currentMember.id ? 
+            {currentMember?.id === review.authorId ? 
                 <div className='edit-delete-container'>
                     <button onClick={handleEdit} className='edit-delete-button' >Edit</button>
                     <button onClick={handleDelete} className='edit-delete-button' >Delete</button>
                 </div> : null
             }   
         </div>
+    }
         </>
     );
 };

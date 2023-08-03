@@ -5,7 +5,7 @@ class Api::ReviewsController < ApplicationController
         if @review.save 
             render :show
         else
-            render json: { error: @review.errors.full_messages }, status: 422
+            render json: { errors: @review.errors.full_messages }, status: 422
         end
     end
 
@@ -15,17 +15,16 @@ class Api::ReviewsController < ApplicationController
         if @review.update(review_params)
             render :show
         else
-            render json: { error: @review.errors.full_messages }, status: 422
+            render json: { errors: @review.errors.full_messages }, status: 422
         end
     end
 
     def destroy
         @review = Review.find(params[:id])
-
         @review.destroy
     end
 
     def review_params
-        params.require(:review).permit(:body, :author_id, :trail_id, :rating)
+        params.require(:review).permit(:id, :body, :author_id, :trail_id, :rating)
     end
 end

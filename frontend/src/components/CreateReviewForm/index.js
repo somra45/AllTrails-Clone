@@ -3,8 +3,9 @@ import './ReviewForm.css'
 import { useState } from 'react';
 import { addReview } from '../../store/reviewReducer';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+import { closeModal } from '../../store/modalReducer';
 
-const CreateReviewForm = ( ) => {
+const CreateReviewForm = () => {
     const trailId = useParams().trailId;
     const trail = useSelector((state) => state.entities.trails[trailId])
     const author = useSelector((state) => state.session.member) 
@@ -17,6 +18,7 @@ const CreateReviewForm = ( ) => {
     const [filled5, setFilled5] = useState(false);
     const [rating, setRating] = useState(1);
     const [clicked, setClicked] = useState(false);
+    const [errors, setErrors] = useState([])
 
     const handleCreateReview = (e) => {
         e.preventDefault();
@@ -27,8 +29,31 @@ const CreateReviewForm = ( ) => {
                 author_id: author.id,
                 rating: rating
             }
-        }));
+        })).then( async (response) => {
+            if (response.ok) {
+                dispatch(closeModal());
+            }
+        }).catch( async (response) => {
+            let data;
+            try {
+                data = await response.clone().json();
+            } catch {
+                data = await response.text();
+            }
+            if (data?.errors) {
+                setErrors(data.errors);
+            } else if (data) {
+                setErrors([data]);
+            } else {
+                setErrors([response.statusText]);
+            }
+        });       
     };
+
+    const handleBackgroundClick = (e) => {
+        e.preventDefault();
+        dispatch(closeModal());
+    }
 
     const handleHover1 = (e) => {
         e.preventDefault();
@@ -159,9 +184,9 @@ const CreateReviewForm = ( ) => {
     return (
             <>
             { trail && 
-            <div className='create-review-modal'>
-            <div className='create-review-div'>
-                <div className='create-review-form-div'>
+            <div className='create-review-modal' onClick={handleBackgroundClick}>
+            <div className='create-review-div' >
+                <div className='create-review-form-div'  onClick={e => e.stopPropagation()}>
                     <h1 className='create-review-header'>{trail.name}</h1>
                     <form className='create-review-form' onSubmit={handleCreateReview} >
                         <span className='create-review-field-header'>Rating</span>
@@ -198,11 +223,16 @@ const CreateReviewForm = ( ) => {
                             </div> 
                         </div>
                         <span className='create-review-field-header' >Review</span>
-                        <textarea className='create-review-field' type='textarea' 
+                        <textarea className={errors.length > 0 ? 'create-review-field-error' : 'create-review-field' } type='textarea' 
                             value={review} onChange={(e) => setReview(e.target.value)} 
                             placeholder='Give back to the community. Share your thoughts 
                             about the trail so others know what to expect' rows='8' cols='10'
                             wrap='soft' name='text'/>
+                            <ul className='create-errors-list'>
+                                {errors.map((error, idx) =>  
+                                    <li className='create-errors-list-item' key={idx}>{error}</li>
+                                )}
+                            </ul>
                         <button onClick={handleCreateReview} className='create-review-button'>Post</button>
                     </form>
                 </div>

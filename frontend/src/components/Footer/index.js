@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <footer className='footer-module'>
             <div className='footer-div'>
-                <h1 className='links-header'>Alltrails</h1>
+                <h1 className='links-header'>Smalltrails</h1>
                 <div className='links-div'>
                     <h1 className='footer-header'>Connect with us</h1>
                     <a className='links' href='https://github.com/somra45'>

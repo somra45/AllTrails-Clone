@@ -1,16 +1,14 @@
-.trails-index-div {
+.trails-show-div {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 20px;
     margin-left: 0px;
-    width: 1400px;
-    max-width: 1400px;
-    overflow: hidden;
-    overflow-x: scroll;
+    width: 100%;
+    overflow-y: scroll;
 }
 
-.trail-image-div {
-    width: 298px;
+.trail-image-show-div {
+    width: 100%;
     height: 180px;
     max-height: 180px;
     min-height: 180PX;
@@ -64,4 +62,12 @@
 .trail-link {
     text-decoration: none;
     cursor: pointer;
+}
+
+.trails-show-index-heading {
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    font-weight: 1000;
+    align-self: center;
+    color: #2b381f;
 }
