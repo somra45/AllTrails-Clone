@@ -460,7 +460,7 @@ Trail.create!(
         end
     end
 
-trails.each_with_index do |trail, idx|
+Trail.all.sort_by{ |t| t.id }.each_with_index do |trail, idx|
     ['a', 'b', 'c', 'd', 'e'].each do |letter|
         trail.images.attach(io: URI.open("https://smalltrails-prod.s3.amazonaws.com/trail-seeds/#{(idx + 1).to_s}/#{(idx + 1).to_s}#{letter}.jpg"),
             filename: "trail_seeds_" + (idx + 1).to_s + letter + ".jpg"
