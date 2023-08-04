@@ -37,6 +37,16 @@
 
 }
 
+.index-filter-div {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-left: 120px;
+}
+
 .index-header {
     font-family: 'Manrope', sans-serif;
     text-decoration: none;
