@@ -15,7 +15,7 @@ const Splash = () => {
                 <h1 className="index-header">Local favorites near New York</h1>
                 < TrailsIndex />
             </div>
-            <div className="index-div">
+            <div className="index-filter-div">
                 <h1 className="index-header">Best Waterfalls</h1>
                 < TrailIndexFilter />
             </div>

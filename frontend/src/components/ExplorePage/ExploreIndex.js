@@ -2,25 +2,27 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { fetchTrails } from '../../store/trailsReducer';
 import { useSelector } from 'react-redux';
-import './TrailIndexFilter.css'
+import './ExploreIndex.css'
 import { Link } from 'react-router-dom';
 
-const TrailIndexFilter = () => {
+const ExploreIndex = () => {
     const dispatch = useDispatch();
-    let alltrails = useSelector((state) => state.entities.trails);
-    alltrails = Object.values(alltrails).filter(trail => trail.description.includes('waterfall') || trail.description.includes('Waterfall'))
-    
+    const trails = Object.values(useSelector(state => state.entities.trails))
+
     useEffect(() => {
         dispatch(fetchTrails());
     }, [])
 
     return (
         <>
-            <div className='trails-filter-div'>
-            {alltrails.map((trail) => (
+        {trails &&
+            <>
+            <h1 className='trails-explore-index-heading'> Explore SmallTrails </h1>
+            <div className='trails-explore-div'>
+            {trails.map((trail) => (  
                 <Link to={`/trails/${trail.trailId}`} className='trail-link' >
                     <div className='trail-div'>
-                        <div className='trail-image-filter-div'>
+                        <div className='trail-image-explore-div'>
                             <img className='trail-image'src={`${trail.imageUrls[0]}`}/>
                         </div>
                         <p className='trail-tag'>{trail.difficulty}</p>
@@ -29,10 +31,12 @@ const TrailIndexFilter = () => {
                         <p className='trail-tag'>Length: {trail.length} mi</p>
                     </div>
                 </Link>
-            ))}
+                ))} 
             </div>
+            </>
+        }
         </>
     )
 }
 
-export default TrailIndexFilter
+export default ExploreIndex

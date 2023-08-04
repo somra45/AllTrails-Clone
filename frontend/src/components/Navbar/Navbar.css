@@ -83,3 +83,12 @@
     flex-direction: row;
     padding-right: 20px;
 }
+
+.explore-link {
+    font-family: 'Manrope', sans-serif;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    color: #2b381f;
+    padding-left: 40px;
+}

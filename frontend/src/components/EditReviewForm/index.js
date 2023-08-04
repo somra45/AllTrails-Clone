@@ -12,7 +12,8 @@ const EditReviewForm = () => {
     const reviews = useSelector((state) => state.entities.reviews);
     const author = useSelector((state) => state.session.member); 
     const dispatch = useDispatch();
-    const [review, setReview] = useState(``);
+    const currentReview = Object.values(reviews).find((review) => review.author.id === author.id)
+    const [review, setReview] = useState(currentReview.body);
     const [filled1, setFilled1] = useState(false);
     const [filled2, setFilled2] = useState(false);
     const [filled3, setFilled3] = useState(false);
@@ -21,7 +22,6 @@ const EditReviewForm = () => {
     const [rating, setRating] = useState(1);
     const [clicked, setClicked] = useState(false);
     const [errors, setErrors] = useState([]);
-
     const handleEditReview = (e) => {
         e.preventDefault();
         const reviewId = Object.values(reviews).find((review) => review.author.id === author.id)
@@ -230,7 +230,7 @@ const EditReviewForm = () => {
                         value={review} onChange={(e) => setReview(e.target.value)} 
                         placeholder='Give back to the community. Share your thoughts 
                         about the trail so others know what to expect' rows='8' cols='10'
-                        wrap='soft' name='text'/>
+                        wrap='soft' name='text' />
                     <ul className='edit-errors-list'>
                         {errors.map((error, idx) =>  
                             <li className='edit-errors-list-item' key={idx}>{error}</li>
