@@ -70,75 +70,13 @@ Seeding
 ------------------------------------------------------------------------------
   Setting up seeds efficiently as well as tags that relay accurate information
   about each trail and what activities are included.
-  members = Member.all
-    memberids = members.map { |member| member.id }
-    memberids = memberids.select { |id| id != 1 }
-    trails.each do |trail|
-        idx_array = []
-        words = trail.description.split(' ')
-        words.each do |word| 
-            REVIEWS_DICTIONARY.each_with_index do |review, idx|
-                id = memberids.sample
-                    current_ids = trail.reviews.map { | review | review.author_id }
-                if review.include?(word) && !current_ids.include?(id) && !idx_array.include?(idx)
-                    rating_array = [1, 2, 3, 4, 5]
-                    new_rating = rating_array.sample
-                    new_review = Review.create(trail_id: trail.trail_id, body: review, author_id: id, rating: new_rating)
-                    idx_array.push(idx)
-                end
-            end
-        end
-    end
-
-Trail.all.sort_by{ |t| t.id }.each_with_index do |trail, idx|
-    ['a', 'b', 'c', 'd', 'e'].each do |letter|
-        trail.images.attach(io: URI.open("https://smalltrails-prod.s3.amazonaws.com/trail-seeds/#{(idx + 1).to_s}/#{(idx + 1).to_s}#{letter}.jpg"),
-            filename: "trail_seeds_" + (idx + 1).to_s + letter + ".jpg"
-        )
-    end
-   
-end
-
-Member.all.each_with_index do |member, idx|
-    if idx != 0
-        member.photo.attach(io: URI.open("https://smalltrails-prod.s3.amazonaws.com/photos/#{member.firstname}.png"),
-            filename: "photos_" + member.firstname + ".png" 
-        )
-    end
-end
+![seeds](https://github.com/somra45/AllTrails-Clone/assets/126993987/4938796e-551c-4a57-8171-228cd5ccb06b)
 ------------------------------------------------------------------------------
 Rating Stars on Create and Edit Review Form
 ------------------------------------------------------------------------------
   Creating customized functions for each star so the hover effect will dynamically
   fill all the previous stars based on which star is being hovered over.
-`                             <div className='star-div'>
-                                <svg onMouseEnter={handleHover1} onMouseLeave={handleLeave1} onClick={handleClick1}  className={filled1 ? 'svg-create-filled' : 'svg-create'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="presentation" 
-                                    aria-hidden="true" focusable="false" data-testid="star-filled" >
-                                    <path d="M11.776.454a.25.25 0 0 1 .448 0l3.303 6.692 7.384 1.073a.25.25 0 0 1 .139.426l-5.344 5.21 1.262 7.354a.25.25 0 0 1-.363.264L12 18l-6.605 3.473a.25.25 0 0 1-.363-.264l1.262-7.355L.95 8.645a.25.25 0 0 1 .139-.426l7.384-1.073L11.776.454Z"></path>
-                                </svg> 
-                            </div> 
-                            <div className='star-div'>
-                                <svg  onMouseEnter={handleHover2} onMouseLeave={handleLeave2} onClick={handleClick2}  className={filled2 ? 'svg-create-filled' : 'svg-create'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="presentation" 
-                                    aria-hidden="true" focusable="false" data-testid="star-filled" >
-                                    <path d="M11.776.454a.25.25 0 0 1 .448 0l3.303 6.692 7.384 1.073a.25.25 0 0 1 .139.426l-5.344 5.21 1.262 7.354a.25.25 0 0 1-.363.264L12 18l-6.605 3.473a.25.25 0 0 1-.363-.264l1.262-7.355L.95 8.645a.25.25 0 0 1 .139-.426l7.384-1.073L11.776.454Z"></path>
-                                </svg> 
-                            </div > 
-                            <div className='star-div'>
-                                <svg  onMouseEnter={handleHover3} onMouseLeave={handleLeave3} onClick={handleClick3} className={filled3 ? 'svg-create-filled' : 'svg-create'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="presentation" 
-                                    aria-hidden="true" focusable="false" data-testid="star-filled" >
-                                    <path d="M11.776.454a.25.25 0 0 1 .448 0l3.303 6.692 7.384 1.073a.25.25 0 0 1 .139.426l-5.344 5.21 1.262 7.354a.25.25 0 0 1-.363.264L12 18l-6.605 3.473a.25.25 0 0 1-.363-.264l1.262-7.355L.95 8.645a.25.25 0 0 1 .139-.426l7.384-1.073L11.776.454Z"></path>
-                                </svg> 
-                            </div> 
-                            <div  className='star-div'>
-                                <svg onMouseEnter={handleHover4} onMouseLeave={handleLeave4} onClick={handleClick4}  className={filled4 ? 'svg-create-filled' : 'svg-create'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="presentation" 
-                                    aria-hidden="true" focusable="false" data-testid="star-filled" >
-                                    <path d="M11.776.454a.25.25 0 0 1 .448 0l3.303 6.692 7.384 1.073a.25.25 0 0 1 .139.426l-5.344 5.21 1.262 7.354a.25.25 0 0 1-.363.264L12 18l-6.605 3.473a.25.25 0 0 1-.363-.264l1.262-7.355L.95 8.645a.25.25 0 0 1 .139-.426l7.384-1.073L11.776.454Z"></path>
-                                </svg> 
-                            </div> 
-                            <div className='star-div'>
-                                <svg onMouseEnter={handleHover5} onMouseLeave={handleLeave5} onClick={handleClick5}  className={filled5 ? 'svg-create-filled' : 'svg-create'} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="presentation" 
-                                    aria-hidden="true" focusable="false" data-testid="star-filled" >
-                                    <path d="M11.776.454a.25.25 0 0 1 .448 0l3.303 6.692 7.384 1.073a.25.25 0 0 1 .139.426l-5.344 5.21 1.262 7.354a.25.25 0 0 1-.363.264L12 18l-6.605 3.473a.25.25 0 0 1-.363-.264l1.262-7.355L.95 8.645a.25.25 0 0 1 .139-.426l7.384-1.073L11.776.454Z"></path>
-                                </svg> 
-                            </div> `
+![ratings](https://github.com/somra45/AllTrails-Clone/assets/126993987/317a4e98-de6f-4d25-bb6f-6b4917632fcf)
+------------------------------------------------------------------------------
+
 
