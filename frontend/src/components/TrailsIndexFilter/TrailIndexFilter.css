@@ -1,0 +1,67 @@
+.trails-filter-div {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-left: 0px;
+    width: 1400px;
+    max-width: 1400px;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+.trail-image-filter-div {
+    width: 298px;
+    height: 180px;
+    max-height: 180px;
+    min-height: 180PX;
+    aspect-ratio: 1.5;
+    border-radius: 16px;
+    isolation: isolate;
+    background-color: #dbdad2;
+    overflow: hidden;
+}
+
+.trail-image {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    transition: transform .5s ease;
+    overflow: hidden;
+}
+
+.trail-image:hover {
+    transform: scale(1.07);
+}
+
+.trail-div {
+    height: 270px;
+    max-width: 298px;
+    padding-left: 20px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}   
+
+.trail-tag {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    padding-bottom: 7px;
+    color: #2b381f;
+}
+
+.trail-name {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    padding-bottom: 11px;
+    padding-top: 4px;
+    font-weight: 700;
+    color: #2b381f;
+}
+
+.trail-link {
+    text-decoration: none;
+    cursor: pointer;
+}

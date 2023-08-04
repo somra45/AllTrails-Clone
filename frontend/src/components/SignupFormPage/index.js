@@ -26,7 +26,13 @@ const SignupFormPage = () => {
             lastname: lastname,
             email: email,
             password: password
-        })).catch( async (response) => {
+        })).then(() => {
+            if (errors.length < 1) {
+                dispatch(loginMember({
+                    email: email,
+                    password: password
+                }))
+        }}).catch( async (response) => {
             let data;
             try {
                 data = await response.clone().json();
@@ -40,13 +46,7 @@ const SignupFormPage = () => {
             } else {
                 setErrors([response.statusText]);
             }
-        });
-        if (errors.length < 1) {
-            dispatch(loginMember({
-                email: email,
-                password: password
-            }))
-        }
+        })
     };
 
     const getErrorByField = (field) => {

@@ -2,6 +2,7 @@
 import './SplashPage.css';
 import TrailsIndex from "./TrailsIndexBar";
 import SearchBar from "./SearchBar";
+import TrailIndexFilter from '../TrailsIndexFilter';
 
 const Splash = () => {
     return (
@@ -13,6 +14,10 @@ const Splash = () => {
             <div className="index-div">
                 <h1 className="index-header">Local favorites near New York</h1>
                 < TrailsIndex />
+            </div>
+            <div className="index-div">
+                <h1 className="index-header">Best Waterfalls</h1>
+                < TrailIndexFilter />
             </div>
         </>
     );

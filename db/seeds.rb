@@ -163,7 +163,7 @@ require "open-uri"
         description: 'Breakneck Ridge is a 4.4-mile trail in Beacon, New York. 
         The trail is known for its steep ascents and challenging rock scrambles.
          The views from the top are worth the effort, though, as you can see the 
-         Hudson River and the Catskill Mountains.',
+         Hudson River and the Catskill Mountains. There are serveral beautiful waterfalls along the hike',
         difficulty: 'Difficult',
         lat: 41.48860,
         lng: -73.95319
@@ -301,7 +301,7 @@ Trail.create!(
         description: 'The Steep Ravine Trail is a 4.4-mile out-and-back trail in
          Marin County. The trail offers stunning views of the Pacific Ocean and 
          the Marin Headlands. The trail is moderately difficult, with some steep 
-         sections. The water rushing through Webb Creek has created a spectacularly steep, 
+         sections. The waterfalls rushing through Webb Creek have created a spectacularly steep, 
          lush canyon shaded by towering redwood trees and populated with a wide variety of 
          local flora and fauna.',
         difficulty: 'Moderate',
