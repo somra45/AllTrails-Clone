@@ -6,7 +6,8 @@ import SignupFormPage from './components/SignupFormPage/index.js';
 import Splash from './components/SplashPage/index.js';
 import Footer from './components/Footer/index.js';
 import TrailShowPage from './components/TrailShowPage/index.js';
-import PhotoSlider from './components/PhotoSlider/index.js'
+import PhotoSlider from './components/PhotoSlider/index.js';
+import ExplorePage from './components/ExplorePage/index.js';
 
 
 function App() {
@@ -34,6 +35,11 @@ function App() {
       <Route exact path="/trails/:trailId/photos">
         <Navbar />
         < PhotoSlider />
+        < Footer />
+      </Route>
+      <Route exact path="/explore">
+        <Navbar />
+        < ExplorePage />
         < Footer />
       </Route>
     </Switch>

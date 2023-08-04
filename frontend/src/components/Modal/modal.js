@@ -17,6 +17,9 @@ const Modal = ( ) => {
         case 'editreview':
           component = <EditReviewForm />
           break;
+        case 'exploretrail':
+          component = <EditReviewForm />
+        break;
         default:
           return null;
       }
