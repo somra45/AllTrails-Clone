@@ -70,7 +70,7 @@ Seeding
 ------------------------------------------------------------------------------
   Setting up seeds efficiently as well as tags that relay accurate information
   about each trail and what activities are included.
-  `    members = Member.all
+  members = Member.all
     memberids = members.map { |member| member.id }
     memberids = memberids.select { |id| id != 1 }
     trails.each do |trail|
@@ -105,7 +105,7 @@ Member.all.each_with_index do |member, idx|
             filename: "photos_" + member.firstname + ".png" 
         )
     end
-end  `
+end
 ------------------------------------------------------------------------------
 Rating Stars on Create and Edit Review Form
 ------------------------------------------------------------------------------
