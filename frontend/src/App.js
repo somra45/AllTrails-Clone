@@ -8,6 +8,7 @@ import Footer from './components/Footer/index.js';
 import TrailShowPage from './components/TrailShowPage/index.js';
 import PhotoSlider from './components/PhotoSlider/index.js';
 import ExplorePage from './components/ExplorePage/index.js';
+import ProfilePage from './components/ProfilePage/index.js';
 
 
 function App() {
@@ -40,6 +41,11 @@ function App() {
       <Route exact path="/explore">
         <Navbar />
         < ExplorePage />
+        < Footer />
+      </Route>
+      <Route exact path='/profile'>
+        <Navbar />
+        < ProfilePage />
         < Footer />
       </Route>
     </Switch>

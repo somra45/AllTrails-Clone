@@ -12,6 +12,7 @@ require "open-uri"
     Trail.destroy_all
     Tag.destroy_all
     Review.destroy_all
+    Favorite.destroy_all
 
 
     TAG_DICTIONARY = ['nature', 'mountain biking', 'birding', 'road biking', 'hike', 
@@ -23,6 +24,7 @@ require "open-uri"
     ActiveRecord::Base.connection.reset_pk_sequence!('reviews')
     ActiveRecord::Base.connection.reset_pk_sequence!('tags')
     ActiveRecord::Base.connection.reset_pk_sequence!('members')
+    ActiveRecord::Base.connection.reset_pk_sequence!('favorites')
 
     Member.create!(
         firstname: "Demo",
@@ -474,7 +476,22 @@ Member.all.each_with_index do |member, idx|
         member.photo.attach(io: URI.open("https://smalltrails-prod.s3.amazonaws.com/photos/#{member.firstname}.png"),
             filename: "photos_" + member.firstname + ".png" 
         )
+    else
+        member.photo.attach(io: URI.open("https://smalltrails-prod.s3.amazonaws.com/photos/demo-profile.jpg"), 
+            filename: "photos_demo-profile.jpg"
+        )
+
     end
 end
 
+Member.all.each do |member|
+    3.times do |make_fav|
+        sample_trail = trails.sample
+        favorited_trails = []
+        if !favorited_trails.include?(sample_trail)
+            Favorite.create(favorites: true, trail_id: sample_trail.id, member_id: member.id)
+            favorited_trails.push(sample_trail)
+        end
+    end
+end
 
