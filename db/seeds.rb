@@ -485,9 +485,9 @@ Member.all.each_with_index do |member, idx|
 end
 
 Member.all.each do |member|
-    3.times do |make_fav|
-        sample_trail = trails.sample
-        favorited_trails = []
+    favorited_trails = []
+    3.times do 
+        sample_trail = Trail.all.to_a.sample
         if !favorited_trails.include?(sample_trail)
             Favorite.create(favorites: true, trail_id: sample_trail.id, member_id: member.id)
             favorited_trails.push(sample_trail)

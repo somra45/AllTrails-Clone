@@ -27,10 +27,13 @@ class Member < ApplicationRecord
         class_name: :Review,
         foreign_key: :author_id, 
         dependent: :destroy
-    has_many :favorited_trails,
+    has_many :favorites,
         class_name: :Favorite, 
         foreign_key: :member_id,
         dependent: :destroy
+    has_many :favorited_trails,
+        through: :favorites,
+        source: :trail
     
 
     def is_password?(password)
