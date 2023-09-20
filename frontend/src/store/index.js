@@ -8,13 +8,15 @@ import trailsReducer from './trailsReducer'
 import reviewReducer from './reviewReducer'
 import uiReducer from './uiReducer'
 import searchReducer from './searchReducer'
+import favoritesReducer from './favoritesReducer'
 
 
 const entitiesReducer = combineReducers({
   members: memberReducer,
   trails: trailsReducer,
   reviews: reviewReducer,
-  search: searchReducer
+  search: searchReducer,
+  favorites: favoritesReducer
 })
 
 const rootReducer = combineReducers({

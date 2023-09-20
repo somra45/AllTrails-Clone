@@ -9,9 +9,32 @@
     background-color: #fff;
     border-radius: 16px;
     box-shadow: 0 8px 16px -1px rgba(0,0,0,.3);
+    padding: 25px;
 }
 
 .profile-left-container {
     min-width: 25%;
-    margin: 40px;
+    margin: 80px;
+}
+
+.profile-right-container {
+    margin: 80px;
+
+}
+
+.profile-trail-image {
+    max-height: 250px;
+    max-width: 250px;
+    min-height: 170px;
+    min-width: 250px;
+}
+
+.favorited-trails-container {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 16px -1px rgba(0,0,0,.3);
+}
+
+.favorited-trails {
+    padding: 20px;
 }
