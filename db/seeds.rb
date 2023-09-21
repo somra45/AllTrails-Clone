@@ -477,8 +477,8 @@ Member.all.each_with_index do |member, idx|
             filename: "photos_" + member.firstname + ".png" 
         )
     else
-        member.photo.attach(io: URI.open("https://smalltrails-prod.s3.amazonaws.com/photos/demo-profile.jpg"), 
-            filename: "photos_demo-profile.jpg"
+        member.photo.attach(io: URI.open("https://smalltrails-prod.s3.amazonaws.com/photos/demo-pro.png"), 
+            filename: "photos_demo-pro.png"
         )
 
     end
