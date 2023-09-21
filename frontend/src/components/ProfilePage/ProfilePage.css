@@ -3,6 +3,7 @@
     height: 100vh;
     display: flex;
     flex-direction: row;
+    background-color: rgb(240, 240, 240);
 }
 
 .profile-info-div {
@@ -13,28 +14,122 @@
 }
 
 .profile-left-container {
-    min-width: 25%;
-    margin: 80px;
+    min-width: 22%;
+    margin-top: 53px;
+    margin-left: 230px;
+    font-family: 'Manrope', sans-serif;
+}
+
+.profile-header {
+    font-family: 'Manrope', sans-serif;
+    font-size: 24px;
+    font-weight: 700;   
+    letter-spacing: 1.6px;
+}
+
+.member-since-p {
+    font-size: 12px;
+    margin-top: 10px;
 }
 
 .profile-right-container {
-    margin: 80px;
+    margin: 53px;
+    margin-left: 27px;
+    margin-right: 140px;
+    font-family: 'Manrope', sans-serif;
+    min-width: 41%;
+    max-width: 41%;
+}
 
+.profile-trail-image-div {
+    max-height: 370px;
+    max-width: 575px;
+    min-height: 370px;
+    min-width: 575px;
+    aspect-ratio: 1.5;
+    border-radius: 16px;
+    overflow: hidden;
 }
 
 .profile-trail-image {
-    max-height: 250px;
-    max-width: 250px;
-    min-height: 170px;
-    min-width: 250px;
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform .5s ease;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.profile-trail-image:hover{
+    transform: scale(1.07);
 }
 
 .favorited-trails-container {
     background-color: #fff;
     border-radius: 16px;
-    box-shadow: 0 8px 16px -1px rgba(0,0,0,.3);
+    box-shadow: 0 8px 8px -1px rgba(0,0,0,.3);
+    max-height: 400px;
+    overflow-y: scroll;
+    width: 100%;
+    padding: 20px 30px;
+}
+
+.favorited-trails-container::-webkit-scrollbar {
+    display: none;
 }
 
 .favorited-trails {
     padding: 20px;
+}
+
+.favorited-trails-header {
+    font-family: 'Manrope', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 20px;
+}
+
+.individual-trail {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 30px;
+}
+
+.profile-page-photo {
+    max-width: 100px;
+    max-height: 100px;
+    min-height: 100px;
+    min-width: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 20px;
+}
+
+.profile-trail-attribute {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    padding-top: 2px;
+}
+
+.profile-trail-title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+    padding-bottom: 4px;
+}
+
+.profile-star-div {
+    padding-top: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+.copyright {
+    padding-top: 8px;
+    padding-left: 25px;
 }
