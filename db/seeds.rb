@@ -30,63 +30,72 @@ require "open-uri"
         firstname: "Demo",
         lastname: "Example",
         email: "demo@example.com",
-        password: "Demopassword"
+        password: "Demopassword",
+        location: "Milo, Maine"
     )
 
     Member.create!(
         firstname: "Amin",
         lastname: "Babar",
         email: "amin@amin.com",
-        password: "Demopassword"
+        password: "Demopassword",
+        location: "Portland, Oregon"
     )
 
     Member.create!(
         firstname: "Peter",
         lastname: "Kim",
         email: "peter@kim.com",
-        password: "Demopassword"
+        password: "Demopassword",
+        location: "San Diego, California"
     )
 
     Member.create!(
         firstname: "Stephen",
         lastname: "Dipietro",
         email: "stephen@me.com",
-        password: "Demopassword"
+        password: "Demopassword",
+        location: "Boston, Massachusetts"
     )
 
     Member.create!(
         firstname: "Clarence",
         lastname: "Smith",
         email: "smith@clarence.com",
-        password: "Demopassword"
+        password: "Demopassword",
+        location: "Baton Rouge, Louisiana"
     )
 
     Member.create!(
         firstname: "Kin",
         lastname: "Tse",
         email: "kinkathaking@kin.com",
-        password: "Demopassword"
+        password: "Demopassword",
+        location: "New York City, New York"
     )
 
     Member.create!(
         firstname: "Kyle",
         lastname: "Ginzberg",
         email: "kyle@ginz.com",
-        password: "Demopassword"
+        password: "Demopassword",
+        location: "Chicago, Illinois"
     )
 
     Member.create!(
         firstname: "Ayce",
         lastname: "Lecap",
         email: "ayce@ayce.com",
-        password: "Demopassword"
+        password: "Demopassword",
+        location: "Los Angeles, California"
     )
 
     Member.create!(
         firstname: "Spencer",
         lastname: "Iascone",
         email: "spencer@thegoat.com",
-        password: "Demopassword"
+        password: "Demopassword",
+        location: "Salt Lake City, Utah"
     )
 
     Trail.create!(

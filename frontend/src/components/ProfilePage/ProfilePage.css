@@ -46,7 +46,6 @@
     max-width: 575px;
     min-height: 370px;
     min-width: 575px;
-    aspect-ratio: 1.5;
     border-radius: 16px;
     overflow: hidden;
 }
@@ -66,7 +65,7 @@
 .favorited-trails-container {
     background-color: #fff;
     border-radius: 16px;
-    box-shadow: 0 8px 8px -1px rgba(0,0,0,.3);
+    box-shadow: 0 4px 4px -1px rgba(0,0,0,.3);
     max-height: 400px;
     overflow-y: scroll;
     width: 100%;
@@ -85,9 +84,11 @@
     font-family: 'Manrope', sans-serif;
     font-size: 22px;
     font-weight: 700;
-    border-bottom: 1px solid lightgray;
-    padding-bottom: 20px;
+    border:none;
+    background-color: #fff;
+    cursor: pointer;
 }
+
 
 .individual-trail {
     display: flex;
@@ -132,4 +133,79 @@
 .copyright {
     padding-top: 8px;
     padding-left: 25px;
+}
+
+.rating-average {
+    font-family: 'Manrope', sans-serif;
+    font-size: 56px;
+    color: #2b381f;
+    font-weight: 1000;
+    letter-spacing: 1px;
+}
+
+.rating-div {
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid lightgray;
+    align-items: flex-start;
+
+}
+
+
+.profile-rating-count-div {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    margin-left: 50%
+}
+
+.rating-count-id {
+    font-family: 'Manrope', sans-serif;
+    font-size: 12px;
+    color: #2b381f;
+    font-weight: 1000;
+    padding: 0px;
+}
+
+.rating-count-id-div {
+    padding-right: 8px;
+    width: 8px;
+}
+
+
+.rating-bar-div {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: baseline;
+    margin-left: 0px;
+    width: 160px;
+    position: static;
+}
+
+.rating-bar-container {
+    background: fixed none;
+    height: 8px;
+    margin-left: 8px;
+    position: relative;
+    align-self: center;
+    width: 100px;
+    bottom: 3px;
+}
+
+.rating-bar-span{
+    background-color: #5de372;
+    display: block;
+    height: 100%;
+    position: relative;
+    border-radius: 4px;
+}
+
+.star-div {
+   position: relative;
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-end;
+   margin-left: 4px;
 }
