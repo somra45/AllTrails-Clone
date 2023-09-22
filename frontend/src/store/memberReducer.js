@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 import { LOGOUT_MEMBER } from "./session";
-const RECEIVE_MEMBER = 'members/RECEIVE_MEMBER'
-const REMOVE_MEMBER = 'members/REMOVE_MEMBER'
+export const RECEIVE_MEMBER = 'members/RECEIVE_MEMBER'
+export const REMOVE_MEMBER = 'members/REMOVE_MEMBER'
 
 export const receiveMember = member => ({
     type: RECEIVE_MEMBER,
@@ -30,7 +30,7 @@ export const createMember = member => async dispatch => {
 
 function memberReducer(state = {}, action) {
 
-    const newState = state
+    const newState = {...state}
     switch (action.type) {
         case RECEIVE_MEMBER:
             newState[action.member.id] = action.member

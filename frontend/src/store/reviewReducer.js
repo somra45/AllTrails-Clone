@@ -1,5 +1,6 @@
 import { csrfFetch } from "./csrf";
 import { RECEIVE_TRAIL } from "./trailsReducer";
+import { RECEIVE_MEMBER } from "./memberReducer";
 
 export const RECEIVE_REVIEW = 'reviews/RECEIVE_REVIEW';
 export const REMOVE_REVIEW = 'reviews/REMOVE_REVIEW';
@@ -61,6 +62,9 @@ const reviewReducer = (state = {}, action) => {
             return newState
         case RECEIVE_TRAIL:
             newState = {...action.trail.reviews}
+            return newState;
+        case RECEIVE_MEMBER:
+            newState = {...action.member.reviews}
             return newState;
         case REMOVE_REVIEW: 
             delete newState[action.reviewId]
