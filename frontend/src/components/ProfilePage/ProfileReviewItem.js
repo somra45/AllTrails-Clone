@@ -1,26 +1,70 @@
 import { useEffect } from "react";
 import { fetchTrail } from "../../store/trailsReducer";
 import { useDispatch, useSelector } from "react-redux";
+import './ProfileReviewItem.css'
+import { openModal } from "../../store/modalReducer";
+import { deleteReview } from "../../store/reviewReducer";
 
 const ProfileReviewItem = ({review}) => {
     const dispatch = useDispatch();
-    const trail = useSelector(state => state.entities.trails)
 
-    const convertTime = (timestamp) => {
-        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        timestamp = timestamp.slice(0, 10);
-        let month = months[parseInt(timestamp.slice(5, 7)) - 1];
-        return `${month} ${timestamp.slice(8)}, ${timestamp.slice(0,4)}`;
-    }
+    const handleDelete = (e) => {
+        e.preventDefault();
+        dispatch(deleteReview(review.id));
+    };
 
+    const timeSinceCreatedAt = (createdTimestamp) => {
+        if (!(createdTimestamp instanceof Date)) {
+          createdTimestamp = new Date(createdTimestamp);
+        }
+        const currentTimestamp = new Date();
+        const timeDifference = currentTimestamp - createdTimestamp;
+        const minute = 60 * 1000;
+        const hour = 60 * minute;
+        const day = 24 * hour;
+        const week = 7 * day;
+        const month = 30.44 * day; 
+        const year = 365.25 * day; 
+      
+        let unit, value;
+        if (timeDifference < minute) {
+          unit = 'second';
+          value = Math.floor(timeDifference / 1000);
+        } else if (timeDifference < hour) {
+          unit = 'minute';
+          value = Math.floor(timeDifference / minute);
+        } else if (timeDifference < day) {
+          unit = 'hour';
+          value = Math.floor(timeDifference / hour);
+        } else if (timeDifference < week) {
+          unit = 'day';
+          value = Math.floor(timeDifference / day);
+        } else if (timeDifference < month) {
+          unit = 'week';
+          value = Math.floor(timeDifference / week);
+        } else if (timeDifference < year) {
+          unit = 'month';
+          value = Math.floor(timeDifference / month);
+        } else {
+          unit = 'year';
+          value = Math.floor(timeDifference / year);
+        }
+      
+        if (value !== 1) {
+          unit += 's';
+        }
+      
+        return `${value} ${unit} ago`;
+      }
+      
     return (
         <>
             <div className='review-div'>
             <div className='review-author-container'>
-                <div className="profile-picture" style={{backgroundImage: `url(${review.photoUrl})`}}></div>
+                <div className="profile-trail-picture" style={{backgroundImage: `url(${review.imageUrls[0]})`}}></div>
                 <div className='review-author-name-container'>
-                    {/* <h2 className='review-author'>{`${review.author.firstname} ${review.author.lastname[0]}`}</h2> */}
-                    <p className='review-time-created'> {convertTime(review.createdAt)}</p>
+                    <h2 className='profile-review-author'>{`${review.trail.name}`}</h2>
+                    <p className='review-time-created'> {timeSinceCreatedAt(review.createdAt)}</p>
                 </div>
             </div>
          
@@ -52,7 +96,11 @@ const ProfileReviewItem = ({review}) => {
                 </svg>
             </div>
                 <p className='review'>{review.body}</p>
+                <div className='edit-delete-container'>
+                    <button onClick={handleDelete} className='edit-delete-button' >Delete</button>
+                </div>
             </div>
+         
             </>
         
     )

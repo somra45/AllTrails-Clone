@@ -453,7 +453,6 @@ Trail.create!(
     ]
     members = Member.all
     memberids = members.map { |member| member.id }
-    memberids = memberids.select { |id| id != 1 }
     trails.each do |trail|
         idx_array = []
         words = trail.description.split(' ')

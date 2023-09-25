@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { fetchMember } from '../../store/memberReducer';
 import TrailReviewItem from '../TrailShowPage/TrailReviewItem.js'
 import ProfileReviewItem from './ProfileReviewItem';
+import Modal from '../Modal/modal';
 
 const ProfilePage = () => {
     const member = useSelector(state => state.session.member);
@@ -109,7 +110,7 @@ const ProfilePage = () => {
                 <div className='profile-right-container'>
                     <div className='favorited-trails-container' >
                         <div>
-                            <button className='favorited-trails-header' onClick={handleFavoriteSelect}> Favorites </button>
+                            <button className='favorited-trails-header fav' onClick={handleFavoriteSelect}> Favorites </button>
                             <button className='favorited-trails-header' onClick={handleReviewSelect} > Reviews </button>
                         </div>
                     { favoritesTab ? 
@@ -252,7 +253,10 @@ const ProfilePage = () => {
                         {reviews && 
                             reviews.map( review => {
                                 return <>
-                                    < ProfileReviewItem review={review} />
+                                <div className='profile-review-feed-div'>
+                                <  ProfileReviewItem review={review} key={review.id}/>
+                                </div>
+                                    
                                 </>
                             })
                         }
