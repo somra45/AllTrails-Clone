@@ -6,6 +6,8 @@ json.member do
         @member.reviews.each do |review|
             json.set! review.id do
                 json.extract! review, :id, :body, :author_id, :trail_id, :rating, :created_at, :updated_at
+                json.trail review.trail
+                json.imageUrls review.trail.images.map { |file| file.url }
             end
         end
     end

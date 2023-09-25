@@ -5,9 +5,12 @@ const Footer = () => {
         <footer className='footer-module'>
             <div className='footer-div'>
             <img className='logo-footer' alt='logo' src='/assets/images/smalltrails-logo.png'></img>
-                <h1 className='links-header'>Smalltrails</h1>
+                <div className='logo-div'>
+                    <h1 className='links-header'>Smalltrails</h1>
+                    <p className='footer-trail-attribute' > @2023 SmallTrails, All Rights Reserved</p>
+                </div>
                 <div className='links-div'>
-                    <h1 className='footer-header'>Connect with us</h1>
+                    <h1 className='footer-header'>Connect with me</h1>
                     <a className='links' href='https://github.com/somra45'>
                         <img src='/assets/images/github-logo.png' alt='github-logo'/>
                     </a>

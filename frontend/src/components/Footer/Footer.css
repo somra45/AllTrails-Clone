@@ -13,6 +13,13 @@
     font-family: 'Manrope', sans-serif;
 }
 
+.logo-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: #fff;
+}
+
 .footer-div {
     padding-top: 55px;
     padding-left: 15px;
@@ -44,4 +51,11 @@
     margin-left: 10px;
     position: relative;
     bottom: 27px;
+}
+
+
+.footer-trail-attribute {
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    padding-top: 2px;
 }
