@@ -47,7 +47,7 @@ const ProfilePage = () => {
         year = parseInt(member.createdAt.slice(0,4));
         const day = parseInt(member.createdAt.slice(8,10))
         const createdAtDate = new Date(year,month,day) 
-        return monthsArray[createdAtDate.getMonth()]
+        return monthsArray[createdAtDate.getMonth().toString()]
     }
 
     const handleFavoriteSelect = (e) => {
@@ -254,7 +254,7 @@ const ProfilePage = () => {
                             reviews.map( review => {
                                 return <>
                                 <div className='profile-review-feed-div'>
-                                <  ProfileReviewItem review={review} key={review.id}/>
+                                    <  ProfileReviewItem review={review} key={review.id}/>
                                 </div>
                                     
                                 </>

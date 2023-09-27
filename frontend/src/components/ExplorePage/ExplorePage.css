@@ -35,3 +35,11 @@
     justify-content: space-between;
     padding-left: 62px;
 }
+
+.explore-map-container-div {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    height: 454px;
+    width: 60%;
+}

@@ -59,3 +59,9 @@
     font-size: 11px;
     padding-top: 2px;
 }
+
+.footer-link {
+    text-decoration: none;
+    color: #fff;
+    padding-top: 4px;
+}

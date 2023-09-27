@@ -1,14 +1,24 @@
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Wrapper } from '@googlemaps/react-wrapper' 
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../store/modalReducer';
+import TrailMapShow from './TrailMapShow';
 
 const ExploreMap = ( {trails, mapOptions} ) => {
     const dispatch = useDispatch();
 
     const mapRef = useRef(null);
     const markersRef = useRef({});
+    const [selected, setSelected] = useState(false)
+    
+    const onMapClick = (trail) => {
+        return (
+            <>
+                <TrailMapShow trail={trail}/>
+            </>
+        )
+    }
 
     useEffect(() => {
 
@@ -29,6 +39,7 @@ const ExploreMap = ( {trails, mapOptions} ) => {
                 });
         
                 markersRef.current[trail?.id] = marker;
+                marker.addListener( 'click', onMapClick(trail))
                 return () => {
                     markersRef.current = {};
                 }

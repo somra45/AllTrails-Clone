@@ -6,6 +6,7 @@ import './ExplorePage.css'
 import ExploreMapWrapper from "./ExploreMap";
 import ExploreIndex from "./ExploreIndex";
 import { fetchSearchResults, clearSearchResults } from "../../store/searchReducer";
+import Map from "../Map/Map";
 
 const ExplorePage = () => {
 
@@ -62,6 +63,9 @@ const ExplorePage = () => {
                     <ExploreIndex />
                 </div>
                 <ExploreMapWrapper trails={smalltrails} />
+                <div className="explore-map-container-div"> 
+                    {/* < Map trails={smalltrails} /> */}
+                </div>
             </div>
             
             {/* } */}
