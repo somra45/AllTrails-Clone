@@ -75,3 +75,16 @@
     color: #2b381f;
     padding-top: 20px;
   }
+
+  .photo-page-link {
+    text-decoration: none;
+    font-family: 'Manrope', sans-serif;
+    font-size: 20px;
+    font-weight: 1000;
+    color: #2b381f;
+    padding-top: 10px;
+  }
+
+  .photo-page-link:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+  }

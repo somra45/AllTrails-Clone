@@ -52,7 +52,11 @@ const TrailShowPage = () => {
 
      const handleClick = (e) => {
         e.preventDefault();
-        if (currentMember) {
+        const authoredReview = reviews.find((review) => review.author.id === currentMember.id)
+        if (authoredReview) {
+            window.alert('You have already written a review for this trail!')
+        }
+        else if (currentMember) {
             dispatch(openModal('createreview'));
         } else {
             history.push('/login')
@@ -69,6 +73,24 @@ const TrailShowPage = () => {
         history.push(`/trails/${trailId}/photos`);
     }
 
+    const openDirections = (e) => {
+        e.preventDefault();
+        window.location.href = 'https://www.google.com/maps'
+    }
+
+    const openPrint = (e) => {
+        e.preventDefault();
+        window.print();
+    }
+
+    const openShare = async => (e) => {
+        e.preventDefault();
+        try {
+            navigator.share(trail);
+        } catch (err) {
+
+        }
+    }
     return (
         <>
         { trail && trail.imageUrls &&
@@ -88,21 +110,20 @@ const TrailShowPage = () => {
                             </div>
                             <p className='link-header'>Photos</p>
                         </div>
-                        <div className='link'>
-                            <div className='links-circle-div'>
-                                <img src='../assets/images/Show-page-icons/truck.svg' alt='directions'></img>
+                            <div className='link' onClick={openDirections}>
+                                <div className='links-circle-div'>
+                                    <img src='../assets/images/Show-page-icons/truck.svg' alt='directions'></img>
+                                </div>
+                                <p className='link-header'>Directions</p>
                             </div>
-                            <p className='link-header'>Directions</p>
-                        </div>
-
-                        <div className='link'>
+                        <div className='link' onClick={openPrint}>
                             <div className='links-circle-div'>
                                 <img src='../assets/images/Show-page-icons/printer.svg' alt='print'></img>
                             </div> 
                             <p className='link-header'>Print</p>
                         </div>
                         
-                        <div className='link'>
+                        <div className='link' onClick={openShare}>
                             <div className='links-circle-div'>
                                 <img src='../assets/images/Show-page-icons/share.svg' alt='share'></img>
                             </div>
