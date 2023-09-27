@@ -8,6 +8,7 @@ const Footer = () => {
                 <div className='logo-div'>
                     <h1 className='links-header'>Smalltrails</h1>
                     <p className='footer-trail-attribute' > @2023 SmallTrails, All Rights Reserved</p>
+                    <p className='footer-trail-attribute'> <a className='footer-link' href="https://www.flaticon.com/free-icons/park" title="park icons">Park icons on map created by setiawanap - Flaticon</a></p>
                 </div>
                 <div className='links-div'>
                     <h1 className='footer-header'>Connect with me</h1>

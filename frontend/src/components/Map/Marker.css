@@ -1,0 +1,12 @@
+.marker-div {
+
+  width: 28px;
+  height: 28px;
+  border-radius: 100%;
+}
+
+.trail-marker-image {
+    /* position: fixed; */
+    width: 28px;
+    height: 28px;
+}
