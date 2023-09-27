@@ -4,6 +4,7 @@ import { FaArrowAltCircleRight, FaArrowAltCircleLeft } from 'react-icons/fa';
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from 'react-router-dom/cjs/react-router-dom';
 import { fetchTrail } from '../../store/trailsReducer';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import './PhotoSlider.css'
 
 const PhotoSlider = () => {
@@ -37,6 +38,7 @@ const PhotoSlider = () => {
             <div className='photo-page-details-div'>
                 <h1 className='photo-page-header'>{trail.name}</h1>
                 <p className='photo-page-location'>{trail.location}</p>
+                < Link to={`/trails/${trailId}`}><p className='photo-page-link'>Back to Trail</p></Link>
             </div>
             
             <section className='image-slider'>
