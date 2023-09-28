@@ -62,8 +62,9 @@ const ExplorePage = () => {
                 {/* </div> */}
                     <ExploreIndex />
                 </div>
-                <ExploreMapWrapper trails={smalltrails} />
+               
                 <div className="explore-map-container-div"> 
+                <ExploreMapWrapper trails={smalltrails} />
                     {/* < Map trails={smalltrails} /> */}
                 </div>
             </div>

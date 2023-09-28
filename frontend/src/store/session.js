@@ -18,11 +18,10 @@ export const removeCurrentMember = memberId => {
 };
 
 export const loginMember = (member) => async dispatch => {
+    let memberData = JSON.stringify({member: member})
     const response = await csrfFetch('/api/session', {
         method: 'POST',
-        body: JSON.stringify({
-            member: member
-        })
+        body: memberData
     })
     if (response.ok) {
         const data = await response.json();
@@ -46,8 +45,7 @@ export const logoutMember = (currentMemberId) => async dispatch => {
 export const signupMember = (member) => async dispatch => {
     const response = await csrfFetch('/api/members', {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(member)
+        body: member
     })
     if (response.ok) {
         const data = response.json();
