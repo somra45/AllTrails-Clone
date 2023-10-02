@@ -14,7 +14,7 @@ const ExploreMap = ( {trails, mapOptions} ) => {
     const markersRef = useRef({});
     
     const onMapClick = (trail) => {
-        // history.push(`trails/${trail.id}`)
+        history.push(`trails/${trail.trailId}`)
     }
 
     useEffect(() => {
@@ -28,15 +28,18 @@ const ExploreMap = ( {trails, mapOptions} ) => {
                 ...mapOptions
             });
             Object.values(trails).forEach( (trail, idx) => {
+                console.log('trail', trail)
                 let marker = new window.google.maps.Marker({
                     position: {lat: trail?.lat, lng: trail?.lng},
                     map, 
                     title: trail?.name,
-                    icon: "/assets/images/map-pin.svg"
+                    icon: "/assets/images/park.png"
                 });
-        
+                
                 markersRef.current[trail?.id] = marker;
-                marker.addListener( 'click', onMapClick(trail))
+                marker.addListener( 'click', () => {
+                    onMapClick(trail)
+                })
                 return () => {
                     markersRef.current = {};
                 }
@@ -48,7 +51,7 @@ const ExploreMap = ( {trails, mapOptions} ) => {
 
     return (
         <div ref={mapRef} 
-            style={{ width: '60%', 
+            style={{ width: '80%', 
                     height: '454px', 
                     borderRadius: '15px',
                     padding: '50px',

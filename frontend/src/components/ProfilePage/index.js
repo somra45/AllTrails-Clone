@@ -118,7 +118,7 @@ const ProfilePage = () => {
                             {favoritedTrails.length > 0 && 
                                 favoritedTrails?.map(trail => 
                                     <div className='individual-trail'>
-                                        <Link to={`/trails/${trail.id}`}>
+                                        <Link to={`/trails/${trail.trailId}`}>
                                             <div className='profile-trail-image-div'  >
                                                 <img className='profile-trail-image' src={trail.imageUrls[0]}></img> 
                                             </div>

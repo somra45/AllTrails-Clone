@@ -54,9 +54,9 @@ const LoginFormPage = () => {
                 <h1 className='login-header'>Welcome Back. <br></br> Log in and start exploring.</h1>
                 <div className='login-form-div'>
                     <form className='login-form' onSubmit={handleSubmit}>
-                    <input className={errors.length >= 1 ? 'login-field-error' : 'login-field'} type='text' placeholder='Email Address' 
+                    <input name="member[email]" className={errors.length >= 1 ? 'login-field-error' : 'login-field'} type='text' placeholder='Email Address' 
                         value={email} onChange={(e) => {setEmail(e.target.value)}}/>
-                    <input className={errors.length >= 1 ? 'login-field-error' : 'login-field'} type='password' placeholder='Password' 
+                    <input name="member[password]" className={errors.length >= 1 ? 'login-field-error' : 'login-field'} type='password' placeholder='Password' 
                         value={password} onChange={(e) => {setPassword(e.target.value)}}/>
                         { errors.length >= 1 ? <span className='login-error'>{errors}</span> : <span></span> }
                     <button className='login-submit' >Log in</button>

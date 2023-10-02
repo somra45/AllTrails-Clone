@@ -12,6 +12,8 @@ import Modal from '../Modal/modal';
 import MapWrapper from '../Map';
 import TrailIndexShow from './TrailIndexShow';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const TrailShowPage = () => {
     const trailId = useParams().trailId;
@@ -21,6 +23,7 @@ const TrailShowPage = () => {
     const currentMember = useSelector(state => state.session.member)
     const [totalRating, setTotalRating] = useState(1); 
     const [averageRating, setAverageRating] = useState(1);
+    const [multipleReviewError, setMultipleReviewError] = useState(false);
     const history = useHistory();
     let ratingCount1 = 0;
     let ratingCount2 = 0;
@@ -54,7 +57,7 @@ const TrailShowPage = () => {
         e.preventDefault();
         const authoredReview = reviews.find((review) => review.author.id === currentMember.id)
         if (authoredReview) {
-            window.alert('You have already written a review for this trail!')
+            setMultipleReviewError(true);
         }
         else if (currentMember) {
             dispatch(openModal('createreview'));
@@ -90,6 +93,13 @@ const TrailShowPage = () => {
         } catch (err) {
 
         }
+    }
+
+    const reviewButton = document.getElementById('review-button');
+
+    const handleMultipleReviewError = (e) => {
+        e.preventDefault();
+        setMultipleReviewError(false)
     }
     return (
         <>
@@ -163,6 +173,12 @@ const TrailShowPage = () => {
                         {trail.tags.map((tag) => (<div className='tag-div' key={tag.id} ><p className='tag'  key={tag.id}>{tag}</p></div>))}  
                         </div>
                        { reviews && <div className='review-feed-div'>
+                       { multipleReviewError ? 
+                        <Popup trigger={<button className='multiple-review-error-button' > Why Can't I Write A Review ? </button>} position="right center">
+                            <div className='multiple-review-error-div'><p className='multiple-review-error-message'>You have already written a review for this trail! You can edit your current review, or delete it before writing a new one.</p></div>
+                        </Popup>
+                        : null
+                        }
                             <h1 id='review-header'>Reviews</h1>
                             <div className='rating-div'>
                                 <div className='rating-count-div'>
@@ -267,7 +283,7 @@ const TrailShowPage = () => {
                                         <p className='review-count'>{`${reviews.length} reviews`}</p>
                                     </div>
                                 </div>
-                                <button onClick={handleClick} className='write-review-button'>Write review
+                                <button id='write-review' onClick={handleClick} className='write-review-button'>Write review
                                 </button>
                             </div>
                             < TrailReview />

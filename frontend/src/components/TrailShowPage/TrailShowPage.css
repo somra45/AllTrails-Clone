@@ -361,3 +361,42 @@
 .right-bar-div {
     width: 100%;
 }
+
+.multiple-review-error-button {
+    font-family: 'Manrope', sans-serif;
+    border-color: #2c5601;
+    background-color: #2c5601;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    height: 48px;
+    padding: 0 24px;
+    flex-direction: row;
+    box-sizing: border-box;
+    max-width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    margin-bottom: 13px;
+}
+
+.multiple-review-error-div {
+    padding: 10px;
+    margin: 10px;
+}
+
+.multiple-review-error-message-content {
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    color:rgba(0, 51, 8, 0.8);
+    padding: 10px;
+    border-radius: 15px;
+}
+
+
+.popup-overlay {
+    background: rgba(0, 0, 0, 0.7);
+  }

@@ -18,10 +18,12 @@ export const fetchMember = memberId => async dispatch => {
     }   
 };
 
+
 export const createMember = member => async dispatch => {
+    debugger
     const response = await csrfFetch('api/members', {
         method: 'POST',
-        body: JSON.stringify(member)
+        body: member
     });
     const data = await response.json();
     sessionStorage.setItem('currentMember', JSON.stringify(data.member));
