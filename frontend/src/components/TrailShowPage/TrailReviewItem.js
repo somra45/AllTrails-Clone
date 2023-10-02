@@ -30,7 +30,7 @@ const TrailReviewItem = ( {review} ) => {
             <div className='review-author-container'>
                 <div className="profile-picture" style={{backgroundImage: `url(${review.photoUrl})`}}></div>
                 <div className='review-author-name-container'>
-                    <h2 className='review-author'>{`${review.author.firstname} ${review.author.lastname[0]}`}</h2>
+                    <h2 className='review-author'>{`${review.author?.firstname} ${review.author?.lastname[0]}`}</h2>
                     <p className='review-time-created'> {convertTime(review.createdAt)}</p>
                 </div>
             </div>
