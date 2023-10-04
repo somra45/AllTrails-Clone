@@ -156,6 +156,31 @@
 
 }
 
+.create-review-button-disabled {
+    font-family: 'Manrope', sans-serif;
+    border-color: rgba(225, 225, 225, 0.7);
+    background-color: rgba(205, 205, 205, 0.7);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.5;
+    height: 48px;
+    padding: 24px 24px;
+    margin-top: 20px;
+    position: relative;
+    display: inline-flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    max-width: 90px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    align-self: flex-end;
+    pointer-events: none;
+}
+
 .create-review-button:hover {
     background-color: #2b381f;
 }

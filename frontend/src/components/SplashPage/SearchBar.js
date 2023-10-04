@@ -40,7 +40,7 @@ const SearchBar = () => {
             history.push(`/trails/${searchResults[0].id}`);
             dispatch(clearSearchResults());
             setSearchText('');
-        }
+        } 
     }
 
     return (
@@ -61,6 +61,11 @@ const SearchBar = () => {
                             <p className="search-result-item-location">{result.location}</p>
                         </li> 
                     )}
+                    {searchResults.length < 1 ? 
+                    <li className="search-result-item">
+                        <p className="search-result-item-name" >No Results Found</p>
+                    </li>
+                    : null}
                 </ul>
                 }
             </div>
