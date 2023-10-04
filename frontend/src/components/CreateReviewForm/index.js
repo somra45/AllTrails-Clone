@@ -228,12 +228,13 @@ const CreateReviewForm = () => {
                             placeholder='Give back to the community. Share your thoughts 
                             about the trail so others know what to expect' rows='8' cols='10'
                             wrap='soft' name='text'/>
-                            <ul className='create-errors-list'>
+                            {/* This will render backend errors directly to the user  */}
+                            {/* <ul className='create-errors-list'>
                                 {errors.map((error, idx) =>  
                                     <li className='create-errors-list-item' key={idx}>{error}</li>
                                 )}
-                            </ul>
-                        <button onClick={handleCreateReview} className='create-review-button'>Post</button>
+                            </ul> */}
+                        <button onClick={handleCreateReview} className={errors.length > 0 || review.length <= 3 ? 'create-review-button-disabled' : 'create-review-button'} >Post</button>
                     </form>
                 </div>
             </div>

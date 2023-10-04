@@ -231,12 +231,12 @@ const EditReviewForm = () => {
                         placeholder='Give back to the community. Share your thoughts 
                         about the trail so others know what to expect' rows='8' cols='10'
                         wrap='soft' name='text' />
-                    <ul className='edit-errors-list'>
+                    {/* <ul className='edit-errors-list'>
                         {errors.map((error, idx) =>  
                             <li className='edit-errors-list-item' key={idx}>{error}</li>
                         )}
-                    </ul>
-                    <button value='submit' className='edit-review-button'>Post</button>
+                    </ul> */}
+                    <button value='submit' className={errors.length > 0 || review.length <= 3 ? 'edit-review-button-disabled' : 'edit-review-button'}>Post</button>
                 </form>
 
             </div>
