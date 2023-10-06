@@ -57,11 +57,9 @@ const SignupFormPage = () => {
     };
 
     const getErrorByField = (field) => {
-        if (errors) {
-            return errors.find((error) => {
-                return error.includes(field)
-            });
-        }
+        return errors.find((error) => {
+            return error.includes(field)
+        });
     };
 
     const handleFile = ({ currentTarget }) => {
@@ -79,16 +77,16 @@ const SignupFormPage = () => {
                 <h1 className='login-header'> Sign up today to start planning <br></br> your next adventure</h1>
                 <div className='signup-form-div'>
                     <form className='login-form' onSubmit={handleSubmit}>
-                        <input name="member[firstname]" className={ getErrorByField('firstname') ? 'login-field-error' : 'login-field'} type='text' placeholder='First Name' 
+                        <input name="member[firstname]" className={ getErrorByField('Firstname') ? 'login-field-error' : 'login-field'} type='text' placeholder='First Name' 
                             value={firstname} onChange={(e) => {setFirstname(e.target.value)}}/>
                             { getErrorByField('Firstname') ? <span className='signup-error'>{getErrorByField('Firstname')}</span> : <span></span>}
-                        <input member="member[lastname]" className={ getErrorByField('lastname') ? 'login-field-error' : 'login-field'} type='text' placeholder='Last Name' 
+                        <input member="member[lastname]" className={ getErrorByField('Lastname') ? 'login-field-error' : 'login-field'} type='text' placeholder='Last Name' 
                             value={lastname} onChange={(e) => {setLastname(e.target.value)}}/>
                             { getErrorByField('Lastname') ? <span className='signup-error'>{getErrorByField('Lastname')}</span> : <span></span>}
-                        <input name="member[email]" className={ getErrorByField('email') ? 'login-field-error' : 'login-field'} type='text' placeholder='Email Address' 
+                        <input name="member[email]" className={ getErrorByField('Email') ? 'login-field-error' : 'login-field'} type='text' placeholder='Email Address' 
                             value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                             { getErrorByField('Email') ? <span className='signup-error'>{getErrorByField('Email')}</span> : <span></span>}
-                        <input name="member[password]" className={ getErrorByField('password') ? 'login-field-error' : 'login-field'} type='password' placeholder='Password' 
+                        <input name="member[password]" className={ getErrorByField('Password') ? 'login-field-error' : 'login-field'} type='password' placeholder='Password' 
                             value={password} onChange={(e) => {setPassword(e.target.value)}}/>
                             { getErrorByField('Password') ? <span className='signup-error'>{getErrorByField('Password')}</span> : <span></span>}
                         <button className='login-submit' >Sign Up</button>
