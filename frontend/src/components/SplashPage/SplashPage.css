@@ -1,6 +1,6 @@
 .splash-main-div {
-    width: 100% !important;
-    height: 460px;
+    width: 100vw !important;
+    height: 70vh;
     background-image: url(../../../public/assets/images/group-friends-travel-forest-together.jpg);
     margin: 0px;
     padding: 0px;
@@ -27,7 +27,7 @@
 }
 
 .index-div {
-    height: 400px;
+    height: 64vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -37,7 +37,7 @@
 }
 
 .index-filter-div {
-    height: 400px;
+    height: 64vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
